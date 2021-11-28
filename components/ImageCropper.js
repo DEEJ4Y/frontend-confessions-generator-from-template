@@ -1,16 +1,79 @@
 import Cropper from "react-easy-crop";
+import getCroppedImg from "../utils/cropImage";
 import Button from "react-bootstrap/Button";
 import React, { useState, useCallback } from "react";
+import uploadImageToServer from "../utils/uploadImage";
 
-const ImageCropper = ({ image }) => {
+const ImageCropper = ({
+  image,
+  setImageData,
+  setImageUploadMessage,
+  setTemplateData,
+}) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
-  const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
-    console.log(croppedArea, croppedAreaPixels);
-  }, []);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [croppedImage, setCroppedImage] = useState(null);
+
+  const onCropComplete = useCallback(
+    (croppedArea, croppedAreaPixels) => {
+      setCroppedAreaPixels(croppedAreaPixels);
+      // console.log(croppedArea);
+      showCroppedImage();
+    },
+    [showCroppedImage]
+  );
+
+  const showCroppedImage = useCallback(async () => {
+    try {
+      console.log(croppedAreaPixels);
+      const newCroppedImage = await getCroppedImg(image, croppedAreaPixels, 0);
+      setCroppedImage(newCroppedImage);
+      // console.log("done", croppedImage);
+    } catch (e) {
+      console.error(e);
+    }
+  }, [croppedAreaPixels, image]);
+
+  // const onClose = useCallback(() => {
+  //   setCroppedImage(null);
+  // }, []);
+
+  const saveImage = async () => {
+    // console.log("Saving", croppedImage);
+    const data = await uploadImageToServer({
+      base64String: croppedImage,
+    });
+    console.log(data);
+
+    if (data === "unauthorized") {
+      window.location.href = "/auth/sign-in";
+    } else if (data === false) {
+      setImageUploadMessage(() => {
+        return {
+          message: "Failed to upload your image. Please try again.",
+          type: "danger",
+        };
+      });
+    } else {
+      setImageData(() => {
+        return croppedImage;
+      });
+      setTemplateData((prev) => {
+        return { ...prev, backgroundImage: data.id };
+      });
+      setImageUploadMessage(() => {
+        return {
+          message: "Success! Your image was uploaded.",
+          type: "success",
+        };
+      });
+      // onClose();
+    }
+  };
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div>
       <Cropper
         image={image}
         crop={crop}
@@ -20,7 +83,11 @@ const ImageCropper = ({ image }) => {
         onCropComplete={onCropComplete}
         onZoomChange={setZoom}
       />
-      <Button style={{ position: "absolute", bottom: "10vh", left: "48vw" }}>
+      <Button
+        size={"lg"}
+        style={{ position: "absolute", bottom: "1rem", right: "1rem" }}
+        onClick={saveImage}
+      >
         Save
       </Button>
     </div>

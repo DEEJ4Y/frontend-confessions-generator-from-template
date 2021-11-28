@@ -130,7 +130,7 @@ const GetProject = () => {
                 </Card>
               </div>
             </div>
-            <p>{JSON.stringify(project)}</p>
+            {/* <p>{JSON.stringify(project)}</p> */}
           </div>
         ) : (
           <Spinner style={{ marginTop: "40vh" }} />

@@ -1,15 +1,12 @@
-const uploadImageToServer = async ({ base64String, url }) => {
+import { apiUrl } from "../pages/_app";
+
+const uploadImageToServer = async ({ base64String }) => {
   try {
     let formData = new FormData();
     formData.append("imageData", base64String);
-    const res = await fetch(url, {
+    const res = await fetch(`${apiUrl}/images`, {
       method: "POST",
       credentials: "include",
-      headers: {
-        // "Content-Type": "application/jsonrequest",
-        // "Content-Type": "multipart/form-data; charset=binary",
-        // "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-      },
       body: formData,
     });
 

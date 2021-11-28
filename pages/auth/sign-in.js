@@ -109,6 +109,9 @@ const SignIn = () => {
             />
           ));
         }
+      } else if (res.status === 401) {
+        setFormErrorMessage(() => "Invalid Credentials");
+        setToast(() => <></>);
       }
     } catch (error) {
       console.error(error);
