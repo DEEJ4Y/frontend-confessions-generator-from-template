@@ -1,3 +1,4 @@
+import React from "react";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import ImageCropper from "../../../ImageCropper";
@@ -11,6 +12,7 @@ const ImageUpload = ({
   imageUploadMessage,
   imgData,
 }) => {
+  const [imageCropComplete, setImageCropComplete] = React.useState(false);
   return (
     <div className="mt-4">
       <h6 className="mb-0">Upload an image</h6>
@@ -41,12 +43,13 @@ const ImageUpload = ({
         ""
       )}
       {imgData ? (
-        imgData.length > 0 ? (
+        !imageCropComplete ? (
           <ImageCropper
             image={imgData}
             setTemplateData={setTemplateData}
             setImageUploadMessage={setImageUploadMessage}
             setImageData={setImageData}
+            setImageCropComplete={setImageCropComplete}
           />
         ) : (
           ""

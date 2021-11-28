@@ -9,6 +9,7 @@ const ImageCropper = ({
   setImageData,
   setImageUploadMessage,
   setTemplateData,
+  setImageCropComplete,
 }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -19,25 +20,33 @@ const ImageCropper = ({
     (croppedArea, croppedAreaPixels) => {
       setCroppedAreaPixels(croppedAreaPixels);
       // console.log(croppedArea);
-      showCroppedImage();
+      // console.log(croppedAreaPixels);
+      showCroppedImage({ croppedAreaPixels });
     },
     [showCroppedImage]
   );
 
-  const showCroppedImage = useCallback(async () => {
-    try {
-      console.log(croppedAreaPixels);
-      const newCroppedImage = await getCroppedImg(image, croppedAreaPixels, 0);
-      setCroppedImage(newCroppedImage);
-      // console.log("done", croppedImage);
-    } catch (e) {
-      console.error(e);
-    }
-  }, [croppedAreaPixels, image]);
+  const showCroppedImage = useCallback(
+    async ({ croppedAreaPixels }) => {
+      try {
+        console.log(croppedAreaPixels);
+        const newCroppedImage = await getCroppedImg(
+          image,
+          croppedAreaPixels,
+          0
+        );
+        setCroppedImage(newCroppedImage);
+        // console.log("done", croppedImage);
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    [image]
+  );
 
-  // const onClose = useCallback(() => {
-  //   setCroppedImage(null);
-  // }, []);
+  const onClose = useCallback(() => {
+    setCroppedImage(null);
+  }, []);
 
   const saveImage = async () => {
     // console.log("Saving", croppedImage);
@@ -68,7 +77,8 @@ const ImageCropper = ({
           type: "success",
         };
       });
-      // onClose();
+      onClose();
+      setImageCropComplete(true);
     }
   };
 

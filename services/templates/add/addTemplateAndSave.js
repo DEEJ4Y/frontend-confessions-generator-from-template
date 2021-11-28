@@ -4,6 +4,7 @@ const addTemplateAndSave = async ({
   templateData,
   onSave,
   setImageUploadMessage,
+  projectId,
 }) => {
   try {
     const res = await fetch(`${apiUrl}/templates`, {
@@ -14,10 +15,12 @@ const addTemplateAndSave = async ({
       },
       body: JSON.stringify(templateData),
     });
-
     if (res.status === 201 || res.status === 200) {
       const resData = await res.json();
-      console.log(resData.data, "Saving to template", projectId.id);
+
+      if (resData) {
+        // console.log(resData.data, "Saving to template");
+      }
       try {
         const projRes = await fetch(`${apiUrl}/projects/${projectId.id}`, {
           method: "PUT",

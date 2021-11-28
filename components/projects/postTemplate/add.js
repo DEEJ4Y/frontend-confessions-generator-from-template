@@ -59,13 +59,14 @@ const Add = ({ projectId, onSave }) => {
         <div className="mt-4" style={{ height: "2.25rem" }}>
           <Button
             className="float-end"
-            onClick={() =>
+            onClick={() => {
               addTemplateAndSave({
                 templateData: { ...templateData },
                 onSave,
                 setImageUploadMessage,
-              })
-            }
+                projectId,
+              });
+            }}
           >
             Save
           </Button>
