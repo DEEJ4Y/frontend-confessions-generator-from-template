@@ -4,10 +4,10 @@ import Container from "react-bootstrap/Container";
 import { useState, useEffect, useRef } from "react";
 import { apiUrl } from "../../../pages/_app";
 
-const Default = ({ project, onAdd, onEdit }) => {
+const Default = ({ project, onAdd, onDelete }) => {
   const [projectD, setProject] = useState(false);
   const getProject = useRef(() => {});
-  let imgWidth, imgHeight;
+  let templateContainer = {};
 
   useEffect(() => {
     getProject.current();
@@ -15,6 +15,9 @@ const Default = ({ project, onAdd, onEdit }) => {
 
   getProject.current = async () => {
     try {
+      templateContainer = document
+        .getElementById("default-template-container")
+        .getBoundingClientRect();
       // console.log(projectId);
       const res = await fetch(`${apiUrl}/projects/${project.id}`, {
         credentials: "include",
@@ -33,12 +36,22 @@ const Default = ({ project, onAdd, onEdit }) => {
     }
   };
   return (
-    <>
+    <div id="default-template-container">
       {projectD.template ? (
         <div>
           <h5 className="d-inline m-0">Post Template</h5>
           <span className="float-end" style={{ marginTop: "-5px" }}>
-            <Button onClick={onEdit}>Edit</Button>
+            <Button variant="danger" onClick={onDelete}>
+              Delete
+            </Button>
+          </span>
+          <span
+            className="float-end"
+            style={{ marginTop: "-5px", marginRight: "0.5rem" }}
+          >
+            <Button variant="primary" onClick={onDelete}>
+              Preview
+            </Button>
           </span>
           {projectD.template.fontFamily ? (
             <h6 className="mb-0 mt-4">
@@ -49,12 +62,13 @@ const Default = ({ project, onAdd, onEdit }) => {
           )}
 
           {projectD.template.fontVariant ? (
-            <p className="text-secondary small mb-0 ">
+            <p className="text-secondary small mb-0">
               Variant: {projectD.template.fontVariant || ""}
             </p>
           ) : (
             ""
           )}
+          <h6 className="mt-4">Uploaded Image:</h6>
           <Container fluid className="mt-4">
             {projectD.template.backgroundImage.imageData ? (
               <img
@@ -63,8 +77,8 @@ const Default = ({ project, onAdd, onEdit }) => {
                 src={projectD.template.backgroundImage.imageData}
                 alt="background-image"
                 style={{
-                  width: { imgWidth },
-                  height: { imgHeight },
+                  width: templateContainer.offsetWidth,
+                  height: templateContainer.offsetHeight,
                 }}
               />
             ) : (
@@ -80,7 +94,7 @@ const Default = ({ project, onAdd, onEdit }) => {
           </span>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

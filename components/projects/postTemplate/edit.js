@@ -6,18 +6,14 @@ import FontAndHeading from "./add/FontAndHeading";
 import QueryResults from "./add/QueryResults";
 import FontVariantSelect from "./add/FontVariantSelect";
 import ImageUpload from "./add/ImageUpload";
-import FontSizeSelector from "./add/FontSizeSelector";
-import FontColorSelect from "./add/FontColorSelect";
 
-const Add = ({ projectId, onSave }) => {
+const Edit = ({ projectId, onSave }) => {
   const [templateData, setTemplateData] = useState({
     project: projectId.id,
     fontData: {},
-    fontFamily: "",
-    fontVariant: "",
+    fontFamily: "bruh",
+    fontVariant: "bruh",
     fontFile: "",
-    fontSize: "16px",
-    fontColor: "black",
     fontCategory: "",
     backgroundImage: "",
   });
@@ -52,10 +48,6 @@ const Add = ({ projectId, onSave }) => {
           setTemplateData={setTemplateData}
         />
 
-        <FontSizeSelector setTemplateData={setTemplateData} />
-
-        <FontColorSelect setTemplateData={setTemplateData} />
-
         <ImageUpload
           setImageData={setImageData}
           setTemplateData={setTemplateData}
@@ -84,4 +76,4 @@ const Add = ({ projectId, onSave }) => {
   );
 };
 
-export default Add;
+export default Edit;

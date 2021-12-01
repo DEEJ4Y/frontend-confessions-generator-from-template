@@ -49,7 +49,7 @@ const GetProject = () => {
       if (res.status === 200) {
         const resData = await res.json();
         if (resData.success === true) {
-          console.log(resData);
+          // console.log(resData);
           projectContext.setProjectId(resData.data.id);
           setProject(() => resData.data);
           setToast("");

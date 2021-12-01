@@ -83,7 +83,7 @@ const ImageCropper = ({
   };
 
   return (
-    <div>
+    <div id="image-cropper">
       <Cropper
         image={image}
         crop={crop}

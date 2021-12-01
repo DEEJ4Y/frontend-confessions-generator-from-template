@@ -24,6 +24,7 @@ const ImageUpload = ({
           type="file"
           accept="image/jpeg"
           onChange={(e) => {
+            window.location.href = window.location.href + "#top";
             uploadImage(e, {
               setImageData,
               setTemplateData,
