@@ -39,6 +39,7 @@ const Default = ({ project, onAdd, onDelete }) => {
       console.error(err);
     }
   };
+
   return (
     <>
       {showPreview ? <PreviewTemplate project={project} /> : ""}

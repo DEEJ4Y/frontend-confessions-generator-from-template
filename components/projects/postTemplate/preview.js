@@ -1,8 +1,10 @@
+import Button from "react-bootstrap/Button";
 import Renderer from "./renderer";
 
 const PreviewTemplate = ({ project }) => {
   return (
     <div style={{ overflow: "hidden" }}>
+      <Button></Button>
       <div
         style={{
           position: "absolute",

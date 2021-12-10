@@ -2,6 +2,9 @@
 
 const Renderer = ({ project, dimensions }) => {
   const fontVariant = project.template.fontVariant;
+  let fontFamily = project.template.fontFamily;
+  fontFamily = fontFamily.replace(/\s/g, "+");
+  // console.log(fontFamily);
   let fontItalic = false;
   let fontWeight;
   if (fontVariant.includes("italic")) {
@@ -13,13 +16,13 @@ const Renderer = ({ project, dimensions }) => {
   } else {
     fontWeight = String(fontVariant);
   }
-  console.log("Font Weight", fontWeight);
+  // console.log("Font Weight", fontWeight);
   let fontUrl;
 
   if (fontItalic) {
-    fontUrl = `https://fonts.googleapis.com/css2?family=${project.template.fontFamily}:ital,wght@${fontWeight}&display=swap`;
+    fontUrl = `https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght%40${fontWeight}&display=swap`;
   } else {
-    fontUrl = `https://fonts.googleapis.com/css2?family=${project.template.fontFamily}:wght@${fontWeight}&display=swap`;
+    fontUrl = `https://fonts.googleapis.com/css2?family=${fontFamily}:wght%40${fontWeight}&display=swap`;
   }
 
   return (
@@ -35,11 +38,7 @@ const Renderer = ({ project, dimensions }) => {
         alignItems: "center",
       }}
     >
-      <style>
-        @import url(
-        {fontUrl}
-        );
-      </style>
+      <style>@import url({"" + fontUrl});</style>
       <img
         src={`${project.template.backgroundImage.imageData}`}
         alt="template background"
@@ -50,7 +49,11 @@ const Renderer = ({ project, dimensions }) => {
       <p
         className="mb-0"
         style={{
-          fontFamily: `"${project.template.fontFamily}", ${project.template.fontCategory}`,
+          fontFamily: `"${project.template.fontFamily}", ${
+            project.template.fontCategory !== "handwriting"
+              ? project.template.fontCategory
+              : "cursive"
+          }`,
           fontSize: `${project.template.fontSize || "22px"}`,
           color: `${project.template.fontColor || "black"}`,
           padding: `4rem`,
