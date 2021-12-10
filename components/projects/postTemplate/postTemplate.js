@@ -21,6 +21,7 @@ const PostTemplate = ({ project }) => {
         <Add
           projectId={project}
           onSave={() => {
+            location.reload();
             setViewState("def");
           }}
         />

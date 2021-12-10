@@ -14,9 +14,9 @@ const Add = ({ projectId, onSave }) => {
     project: projectId.id,
     fontData: {},
     fontFamily: "",
-    fontVariant: "",
+    fontVariant: "regular",
     fontFile: "",
-    fontSize: "16px",
+    fontSize: "22px",
     fontColor: "black",
     fontCategory: "",
     backgroundImage: "",
@@ -52,7 +52,7 @@ const Add = ({ projectId, onSave }) => {
           setTemplateData={setTemplateData}
         />
 
-        <FontSizeSelector setTemplateData={setTemplateData} />
+        {/* <FontSizeSelector setTemplateData={setTemplateData} /> */}
 
         <FontColorSelect setTemplateData={setTemplateData} />
 

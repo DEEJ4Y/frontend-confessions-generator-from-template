@@ -8,7 +8,9 @@ const FontVariantSelect = ({ templateData, setTemplateData }) => {
         <div>
           Choose font variant:{" "}
           <Dropdown className="float-end">
-            <Dropdown.Toggle size="sm">Variant</Dropdown.Toggle>
+            <Dropdown.Toggle size="sm">
+              {templateData.fontVariant || "Variant"}
+            </Dropdown.Toggle>
             <Dropdown.Menu>
               {templateData.fontData.variants.map((variant, idx) => {
                 return (

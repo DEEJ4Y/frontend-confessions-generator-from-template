@@ -7,7 +7,7 @@ const FontSizeSelector = ({ setTemplateData }) => {
   const updateFontSize = (e) => {
     let value = e.target.value;
 
-    if (value < 1000 && value > 0) {
+    if (value < 22 && value > 12) {
       setFontSize(() => value);
       setTemplateData((prev) => {
         return {
