@@ -8,8 +8,8 @@ import { apiUrl, ProjectContext } from "../_app";
 import HeadTags from "../../components/headTags";
 import Spinner from "../../components/spinner";
 import AppNavbar from "../../components/appNavbar";
-import Card from "../../components/Card";
-import PostTemplate from "../../components/projects/postTemplate/postTemplate";
+import Create from "../../components/projects/create";
+import deleteProject from "../../services/projects/deleteProject";
 
 const GetProject = () => {
   const router = useRouter();
@@ -108,28 +108,17 @@ const GetProject = () => {
       <Container fluid className="p-4">
         {project ? (
           <div>
+            <Button
+              variant="danger"
+              className="float-end mt-2"
+              onClick={() => {
+                deleteProject({ projectId: project.id });
+              }}
+            >
+              Delete
+            </Button>
             <h1>{project.name}</h1>
-            <div className="row">
-              <div className="col-lg-6 col-md-6 col-sm-12 my-2">
-                <Card>
-                  {project.id.length > 0 ? (
-                    <PostTemplate project={project} />
-                  ) : (
-                    ""
-                  )}
-                </Card>
-              </div>
-              <div className="col-lg-6 col-md-6 col-sm-12 my-2">
-                <Card>
-                  <div>
-                    <h5 className="d-inline m-0">Website</h5>
-                    <span className="float-end" style={{ marginTop: "-5px" }}>
-                      <Button>Add</Button>
-                    </span>
-                  </div>
-                </Card>
-              </div>
-            </div>
+            <Create project={project} />
             {/* <p>{JSON.stringify(project)}</p> */}
           </div>
         ) : (

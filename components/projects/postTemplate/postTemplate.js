@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import deleteTemplate from "../../../services/templates/add/deleteTemplate";
 import Add from "./add";
 import Default from "./default";
 
@@ -12,6 +13,9 @@ const PostTemplate = ({ project }) => {
           project={project}
           onAdd={() => {
             setViewState(() => "add");
+          }}
+          onDelete={() => {
+            deleteTemplate({ templateId: project.template.id });
           }}
         />
       ) : (

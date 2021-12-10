@@ -17,7 +17,7 @@ const PreviewTemplate = ({ project }) => {
         }}
       >
         <Renderer project={project} dimensions={"720px"} />
-        {JSON.stringify(project.template)}
+        {/* {JSON.stringify(project.template.id)} */}
       </div>
     </div>
   );
