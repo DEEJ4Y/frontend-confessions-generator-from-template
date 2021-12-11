@@ -110,7 +110,7 @@ const GetProject = () => {
           <div>
             <Button
               variant="danger"
-              className="float-end mt-2"
+              className="float-end"
               onClick={() => {
                 deleteProject({ projectId: project.id });
               }}

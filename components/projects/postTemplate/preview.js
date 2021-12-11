@@ -1,10 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Renderer from "./renderer";
 
-const PreviewTemplate = ({ project }) => {
+const PreviewTemplate = ({ project, onPreviewClose }) => {
   return (
     <div style={{ overflow: "hidden" }}>
-      <Button></Button>
       <div
         style={{
           position: "absolute",
@@ -13,12 +12,22 @@ const PreviewTemplate = ({ project }) => {
           width: "100vw",
           height: "100vh",
           backgroundColor: "#00000066",
-          overflowX: "hidden",
-          overflowY: "scroll",
+          overflow: "scroll",
           padding: "5rem",
         }}
       >
         <Renderer project={project} dimensions={"720px"} />
+
+        <Button
+          size="lg"
+          className="mt-4"
+          onClick={() => {
+            onPreviewClose();
+          }}
+        >
+          Go back
+        </Button>
+
         {/* {JSON.stringify(project.template.id)} */}
       </div>
     </div>

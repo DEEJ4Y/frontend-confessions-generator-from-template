@@ -42,13 +42,26 @@ const Default = ({ project, onAdd, onDelete }) => {
 
   return (
     <>
-      {showPreview ? <PreviewTemplate project={project} /> : ""}
+      {showPreview ? (
+        <PreviewTemplate
+          project={project}
+          onPreviewClose={() => {
+            setShowPreview(false);
+          }}
+        />
+      ) : (
+        ""
+      )}
       <div id="default-template-container">
         {projectD.template ? (
           <div>
             <h5 className="d-inline m-0">Post Template</h5>
             <span className="float-end" style={{ marginTop: "-5px" }}>
-              <Button variant="danger" onClick={onDelete}>
+              <Button
+                className="mobile-hidden"
+                variant="danger"
+                onClick={onDelete}
+              >
                 Delete
               </Button>
             </span>
@@ -57,6 +70,7 @@ const Default = ({ project, onAdd, onDelete }) => {
               style={{ marginTop: "-5px", marginRight: "0.5rem" }}
             >
               <Button
+                className="mobile-hidden"
                 variant="primary"
                 onClick={() => {
                   setShowPreview(() => true);
