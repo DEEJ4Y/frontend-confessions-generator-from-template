@@ -14,8 +14,8 @@ const PreviewTemplate = ({ project, onPreviewClose }) => {
   const [projectPreview, setProjectPreview] = React.useState(project);
   const [updatedTemplate, setUpdatedTemplate] = React.useState({
     fontSize: projectPreview.template.fontSize,
-    fontColor: projectPreview
-  })
+    fontColor: projectPreview,
+  });
 
   let postDimensions = "720px";
   return (
@@ -91,7 +91,7 @@ const PreviewTemplate = ({ project, onPreviewClose }) => {
           </Card>
         </Container>
 
-        {/* {JSON.stringify(project.template.id)} */}
+        {/* {JSON.stringify(project.name)} */}
       </div>
     </div>
   );

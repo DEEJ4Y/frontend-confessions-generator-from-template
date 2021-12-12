@@ -7,40 +7,42 @@ import Modale from "../../Modal";
 import PreviewTemplate from "./preview";
 
 const Default = ({ project, onAdd, onDelete }) => {
-  const [projectD, setProject] = useState(false);
+  // const [projectD, setProject] = useState(project);
+  const projectD = project;
   const [showPreview, setShowPreview] = useState(false);
 
-  const getProject = useRef(() => {});
-  let templateContainer = {};
+  // const getProject = useRef(() => {});
+  // let templateContainer = {};
+  // templateContainer = document
+  //   .getElementById("default-template-container")
+  //   .getBoundingClientRect();
 
-  useEffect(() => {
-    getProject.current();
-  }, [project]);
+  // useEffect(() => {
+  //   getProject.current();
+  // }, [project]);
 
-  getProject.current = async () => {
-    try {
-      templateContainer = document
-        .getElementById("default-template-container")
-        .getBoundingClientRect();
-      // console.log(projectId);
-      const res = await fetch(`${apiUrl}/projects/${project.id}`, {
-        credentials: "include",
-      });
+  // getProject.current = async () => {
+  //   try {
 
-      if (res.status === 200 || res.status === 201) {
-        const resData = await res.json();
-        setProject(() => resData.data);
-        // console.log(projectD);
-        // console.log(resData.data);
-      } else if (res.status == 401) {
-        window.location.href = `/auth/sign-in?redirect=/projects/${project.id}`;
-      } else {
-        console.log(res.status);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //     // console.log(projectId);
+  //     const res = await fetch(`${apiUrl}/projects/${project.id}`, {
+  //       credentials: "include",
+  //     });
+
+  //     if (res.status === 200 || res.status === 201) {
+  //       const resData = await res.json();
+  //       setProject(() => resData.data);
+  //       // console.log(projectD);
+  //       // console.log(resData.data);
+  //     } else if (res.status == 401) {
+  //       window.location.href = `/auth/sign-in?redirect=/projects/${project.id}?name=${project.name}`;
+  //     } else {
+  //       console.log(res.status);
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <>
@@ -128,10 +130,12 @@ const Default = ({ project, onAdd, onDelete }) => {
                     className="img-fluid"
                     src={projectD.template.backgroundImage.imageData}
                     alt="background-image"
-                    style={{
-                      width: templateContainer.offsetWidth,
-                      height: templateContainer.offsetHeight,
-                    }}
+                    style={
+                      {
+                        // width: templateContainer.offsetWidth,
+                        // height: templateContainer.offsetHeight,
+                      }
+                    }
                   />
                 ) : (
                   ""

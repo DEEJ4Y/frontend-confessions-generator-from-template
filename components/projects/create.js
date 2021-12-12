@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
-import Card from "../../components/Card";
-import PostTemplate from "../../components/projects/postTemplate/postTemplate";
+import Card from "../Card";
+import PostTemplate from "./postTemplate/postTemplate";
 
 export default function Create({ project }) {
   return (
