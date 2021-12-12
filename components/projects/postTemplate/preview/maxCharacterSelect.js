@@ -10,7 +10,7 @@ export default function MaxCharactersSelect({ prevData, setValue }) {
         label={<h6 className="mb-0">Maximum character count</h6>}
         onChange={({ target }) => {
           const { value } = target;
-          if (value > 0 && value < 650) {
+          if (value > 0 && value < 651) {
             setMaxCharacters(() => value);
             setValue((prev) => {
               return {

@@ -2,7 +2,9 @@ import React from "react";
 import FormGroup from "../../../FormGroup";
 
 const FontSizeSelector = ({ setTemplateData, prevData }) => {
-  const [fontSize, setFontSize] = React.useState(prevData.slice(0, 2) || 22);
+  const [fontSize, setFontSize] = React.useState(
+    prevData ? prevData.slice(0, 2) : 22
+  );
 
   const updateFontSize = (e) => {
     let value = e.target.value;
