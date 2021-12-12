@@ -43,8 +43,8 @@ const addTemplateAndSave = async ({
             };
           });
           onSave();
-        } else if (projRes.status === 401) {
-          window.location.href = "/auth/sign-in";
+        } else if (res.status == 401) {
+          window.location.href = `/auth/sign-in?redirect=/projects/${projectId}`;
         } else {
           setImageUploadMessage(() => {
             return {

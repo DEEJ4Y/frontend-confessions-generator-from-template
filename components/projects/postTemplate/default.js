@@ -32,6 +32,8 @@ const Default = ({ project, onAdd, onDelete }) => {
         setProject(() => resData.data);
         // console.log(projectD);
         // console.log(resData.data);
+      } else if (res.status == 401) {
+        window.location.href = `/auth/sign-in?redirect=/projects/${project.id}`;
       } else {
         console.log(res.status);
       }

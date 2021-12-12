@@ -56,7 +56,7 @@ const GetProject = () => {
             setToast("");
           }
         } else if (res.status == 401) {
-          window.location.href = `/auth/sign-in?redirect=/dashboard`;
+          window.location.href = `/auth/sign-in?redirect=/projects/${projectId}`;
         } else {
           setToast(() => {
             return (
