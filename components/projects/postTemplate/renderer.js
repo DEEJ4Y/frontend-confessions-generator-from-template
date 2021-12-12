@@ -1,6 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 
-const Renderer = ({ project, dimensions }) => {
+const Renderer = ({
+  project,
+  dimensions,
+  fontSize,
+  fontColor,
+  lineHeight,
+  maxCharacters,
+  confession,
+}) => {
   const fontVariant = project.template.fontVariant;
   let fontFamily = project.template.fontFamily;
   fontFamily = fontFamily.replace(/\s/g, "+");
@@ -24,6 +32,9 @@ const Renderer = ({ project, dimensions }) => {
   } else {
     fontUrl = `https://fonts.googleapis.com/css2?family=${fontFamily}:wght%40${fontWeight}&display=swap`;
   }
+
+  let lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra et ultrices neque ornare aenean. Amet nisl purus in mollis nunc sed id semper. Scelerisque purus semper eget duis. Egestas quis ipsum suspendisse ultrices gravida. Nunc non blandit massa enim. Purus in mollis nunc sed id semper risus in. Risus ultricies tristique nulla aliquet enim tortor at auctor urna. Morbi tempus iaculis urna id volutpat lacus laoreet non. Netus et malesuada fames ac turpis egestas maecenas. At consectetur lorem donec massa sapien faucibus et molestie ac. Cras tincidunt lobortis feugiat viva.`;
+  lorem = maxCharacters ? lorem.slice(0, maxCharacters) : lorem.slice(0, 650);
 
   return (
     <div
@@ -54,24 +65,15 @@ const Renderer = ({ project, dimensions }) => {
               ? project.template.fontCategory
               : "cursive"
           }`,
-          fontSize: `${project.template.fontSize || "22px"}`,
-          color: `${project.template.fontColor || "black"}`,
+          fontSize: `${fontSize || project.template.fontSize || "22px"}`,
+          color: `${fontColor || project.template.fontColor || "black"}`,
           padding: `4rem`,
+          lineHeight: lineHeight || project.template.lineHeight || 1.5,
         }}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-        posuere dapibus sodales. In eu nibh sed enim ultrices tincidunt. Ut
-        porta, tortor id pharetra aliquet, dui enim gravida quam, at venenatis
-        ante diam et eros. Proin pharetra fringilla cursus. Nunc iaculis
-        interdum eros. Phasellus quis elementum lacus. Ut vitae leo dictum,
-        euismod neque vitae, tincidunt arcu. Morbi tincidunt lobortis eros eu
-        finibus. Vestibulum at mauris cursus, luctus purus ut, hendrerit sapien.
-        Praesent iaculis id neque nec vestibulum. Nam vel felis velit. Mauris
-        quis lorem euismod, bibendum tellus consectetur, placerat urna. Nulla
-        vel ornare ligula. Nam nunc magna, molestie eget volutpat pretium,
-        finibus vitae eros. Phasellus ac metus eu tortor porttitor tristique vel
-        a dolor.
+        {confession || lorem.slice(0, maxCharacters) || lorem.slice(0, 650)}
       </p>
+      {/* {JSON.stringify(project.template.id)} */}
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React from "react";
 import { SketchPicker } from "react-color";
 
-const FontColorSelect = ({ setTemplateData }) => {
-  const [chosenColor, setChosenColor] = React.useState("#000000");
+const FontColorSelect = ({ setTemplateData, prevData }) => {
+  const [chosenColor, setChosenColor] = React.useState(prevData || "#000000");
 
   const handleChangeComplete = (color) => {
     setChosenColor(() => color.hex);

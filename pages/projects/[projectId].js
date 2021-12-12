@@ -41,38 +41,40 @@ const GetProject = () => {
       );
     });
     try {
-      const res = await fetch(`${apiUrl}/projects/${projectId}`, {
-        method: "GET",
-        credentials: "include",
-      });
-
-      if (res.status === 200) {
-        const resData = await res.json();
-        if (resData.success === true) {
-          // console.log(resData);
-          projectContext.setProjectId(resData.data.id);
-          setProject(() => resData.data);
-          setToast("");
-        }
-      } else if (res.status == 401) {
-        window.location.href = `/auth/sign-in?redirect=/dashboard`;
-      } else {
-        setToast(() => {
-          return (
-            <Toast
-              variant={"danger"}
-              heading={"Oops!"}
-              body={
-                "We couldn't fetch your project. Please refresh the page and we'll try again."
-              }
-              onClose={() => {
-                setToast(() => {
-                  return "";
-                });
-              }}
-            />
-          );
+      if (projectId) {
+        const res = await fetch(`${apiUrl}/projects/${projectId}`, {
+          method: "GET",
+          credentials: "include",
         });
+
+        if (res.status === 200) {
+          const resData = await res.json();
+          if (resData.success === true) {
+            // console.log(resData);
+            projectContext.setProjectId(resData.data.id);
+            setProject(() => resData.data);
+            setToast("");
+          }
+        } else if (res.status == 401) {
+          window.location.href = `/auth/sign-in?redirect=/dashboard`;
+        } else {
+          setToast(() => {
+            return (
+              <Toast
+                variant={"danger"}
+                heading={"Oops!"}
+                body={
+                  "We couldn't fetch your project. Please refresh the page and we'll try again."
+                }
+                onClose={() => {
+                  setToast(() => {
+                    return "";
+                  });
+                }}
+              />
+            );
+          });
+        }
       }
     } catch (err) {
       setToast(() => {

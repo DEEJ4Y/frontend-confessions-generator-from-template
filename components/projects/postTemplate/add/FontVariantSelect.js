@@ -46,7 +46,7 @@ const FontVariantSelect = ({ templateData, setTemplateData }) => {
       )}
 
       {templateData.fontVariant ? (
-        <p className="text-secondary small mb-0 ">
+        <p className="text-secondary small">
           Variant: {templateData.fontVariant}
         </p>
       ) : (

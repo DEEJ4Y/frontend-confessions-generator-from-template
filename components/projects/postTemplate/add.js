@@ -52,7 +52,7 @@ const Add = ({ projectId, onSave }) => {
           setTemplateData={setTemplateData}
         />
 
-        {/* <FontSizeSelector setTemplateData={setTemplateData} /> */}
+        <FontSizeSelector setTemplateData={setTemplateData} />
 
         <FontColorSelect setTemplateData={setTemplateData} />
 
