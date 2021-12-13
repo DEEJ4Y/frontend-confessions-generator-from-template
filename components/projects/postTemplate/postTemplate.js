@@ -25,7 +25,7 @@ const PostTemplate = ({ project }) => {
         <Add
           projectId={project}
           onSave={() => {
-            location.reload();
+            window.location.href = `/projects/${project.id}?name=${project.name}`;
             setViewState("def");
           }}
         />

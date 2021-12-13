@@ -40,11 +40,13 @@ function MyApp({ Component, pageProps }) {
   });
 
   return (
-    <UserContext.Provider value={userTokenState}>
-      <ProjectContext.Provider value={selectedProjectId}>
-        <Component {...pageProps} />
-      </ProjectContext.Provider>
-    </UserContext.Provider>
+    <>
+      <UserContext.Provider value={userTokenState}>
+        <ProjectContext.Provider value={selectedProjectId}>
+          <Component {...pageProps} />
+        </ProjectContext.Provider>
+      </UserContext.Provider>
+    </>
   );
 }
 

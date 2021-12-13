@@ -9,10 +9,17 @@ const Renderer = ({
   maxCharacters,
   confession,
 }) => {
+  let lorema =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra et ultrices neque ornare aenean. Amet nisl purus in mollis nunc sed id semper. Scelerisque purus semper eget duis. Egestas quis ipsum suspendisse ultrices gravida. Nunc non blandit massa enim. Purus in mollis nunc sed id semper risus in. Risus ultricies tristique nulla aliquet enim tortor at auctor urna. Morbi tempus iaculis urna id volutpat lacus laoreet non. Netus et malesuada fames ac turpis egestas maecenas. At consectetur lorem donec massa sapien faucibus et molestie ac. Cras tincidunt lobortis feugiat viva.";
+  let lorem = maxCharacters
+    ? lorema.substring(0, maxCharacters)
+    : lorema.substring(0, 650);
+
+  // Updating Font Family for google fonts compatibility: Font families must be '+' delimited strings
   const fontVariant = project.template.fontVariant;
   let fontFamily = project.template.fontFamily;
   fontFamily = fontFamily.replace(/\s/g, "+");
-  // console.log(fontFamily);
+
   let fontItalic = false;
   let fontWeight;
   if (fontVariant.includes("italic")) {
@@ -24,7 +31,6 @@ const Renderer = ({
   } else {
     fontWeight = String(fontVariant);
   }
-  // console.log("Font Weight", fontWeight);
   let fontUrl;
 
   if (fontItalic) {
@@ -32,9 +38,6 @@ const Renderer = ({
   } else {
     fontUrl = `https://fonts.googleapis.com/css2?family=${fontFamily}:wght%40${fontWeight}&display=swap`;
   }
-
-  let lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra et ultrices neque ornare aenean. Amet nisl purus in mollis nunc sed id semper. Scelerisque purus semper eget duis. Egestas quis ipsum suspendisse ultrices gravida. Nunc non blandit massa enim. Purus in mollis nunc sed id semper risus in. Risus ultricies tristique nulla aliquet enim tortor at auctor urna. Morbi tempus iaculis urna id volutpat lacus laoreet non. Netus et malesuada fames ac turpis egestas maecenas. At consectetur lorem donec massa sapien faucibus et molestie ac. Cras tincidunt lobortis feugiat viva.`;
-  lorem = maxCharacters ? lorem.slice(0, maxCharacters) : lorem.slice(0, 650);
 
   return (
     <div
@@ -71,7 +74,7 @@ const Renderer = ({
           lineHeight: lineHeight || project.template.lineHeight || 1.5,
         }}
       >
-        {confession || lorem.slice(0, maxCharacters) || lorem.slice(0, 650)}
+        {confession || lorem}
       </p>
       {/* {JSON.stringify(project.template.id)} */}
     </div>

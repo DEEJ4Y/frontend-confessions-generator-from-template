@@ -12,10 +12,6 @@ import Renderer from "./renderer";
 
 const PreviewTemplate = ({ project, onPreviewClose }) => {
   const [projectPreview, setProjectPreview] = React.useState(project);
-  const [updatedTemplate, setUpdatedTemplate] = React.useState({
-    fontSize: projectPreview.template.fontSize,
-    fontColor: projectPreview,
-  });
 
   let postDimensions = "720px";
   return (
@@ -38,7 +34,10 @@ const PreviewTemplate = ({ project, onPreviewClose }) => {
           fontSize={projectPreview.fontSize}
           fontColor={projectPreview.fontColor}
           lineHeight={projectPreview.lineHeight}
-          maxCharacters={projectPreview.maxCharacters}
+          maxCharacters={
+            projectPreview.maxCharacters ||
+            projectPreview.template.maxCharacters
+          }
         />
 
         <Container fluid style={{ maxWidth: postDimensions, padding: "0" }}>
