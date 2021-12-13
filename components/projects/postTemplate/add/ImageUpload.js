@@ -5,12 +5,12 @@ import ImageCropper from "../../../ImageCropper";
 import uploadImage from "../../../../services/templates/add/uploadImage";
 
 const ImageUpload = ({
-  templateData,
   setImageData,
   setTemplateData,
   setImageUploadMessage,
   imageUploadMessage,
   imgData,
+  imgAspect,
 }) => {
   const [imageCropComplete, setImageCropComplete] = React.useState(false);
   return (
@@ -51,6 +51,7 @@ const ImageUpload = ({
             setImageUploadMessage={setImageUploadMessage}
             setImageData={setImageData}
             setImageCropComplete={setImageCropComplete}
+            imgAspect={imgAspect ? imgAspect : 1 / 1}
           />
         ) : (
           ""

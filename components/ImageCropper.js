@@ -10,6 +10,7 @@ const ImageCropper = ({
   setImageUploadMessage,
   setTemplateData,
   setImageCropComplete,
+  imgAspect,
 }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -88,7 +89,7 @@ const ImageCropper = ({
         image={image}
         crop={crop}
         zoom={zoom}
-        aspect={1 / 1}
+        aspect={imgAspect || 1 / 1}
         onCropChange={setCrop}
         onCropComplete={onCropComplete}
         onZoomChange={setZoom}

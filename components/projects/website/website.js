@@ -1,8 +1,10 @@
 import React from "react";
+import Add from "./add/add";
+import Default from "./default/default";
 
 const Website = ({ project }) => {
   const [viewState, setViewState] = React.useState("def");
-  console.log(project);
+  // console.log(project);
 
   React.useEffect(() => {
     if (project.websiteConfig) {
@@ -14,8 +16,17 @@ const Website = ({ project }) => {
 
   return (
     <>
-      {viewState === "def" ? <h2>Details about the website</h2> : ""}
-      {viewState === "add" ? <h2>Add</h2> : ""}
+      {viewState === "def" ? <Default /> : ""}
+      {viewState === "add" ? (
+        <Add
+          project={project}
+          onSave={() => {
+            setViewState("def");
+          }}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 };

@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import { apiUrl, ProjectContext } from "../_app";
 import HeadTags from "../../components/headTags";
-import Spinner from "../../components/spinner";
+import Spinner from "../../components/Spinner";
 import AppNavbar from "../../components/appNavbar";
 import Create from "../../components/projects/create";
 import deleteProject from "../../services/projects/deleteProject";
