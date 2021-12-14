@@ -4,7 +4,7 @@ import Default from "./default/default";
 
 const Website = ({ project }) => {
   const [viewState, setViewState] = React.useState("def");
-  console.log(project);
+  // console.log(project);
 
   React.useEffect(() => {
     if (project.websiteConfig) {

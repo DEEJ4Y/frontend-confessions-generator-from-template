@@ -31,6 +31,9 @@ export default function WebsiteLink({ project }) {
           onClick={() => {
             copyToClipboard(projectLink);
             setCopiedLink(() => true);
+            setTimeout(() => {
+              setCopiedLink(() => false);
+            }, 3000);
           }}
         >
           Copy{" "}
