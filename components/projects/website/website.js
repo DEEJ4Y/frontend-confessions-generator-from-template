@@ -4,7 +4,7 @@ import Default from "./default/default";
 
 const Website = ({ project }) => {
   const [viewState, setViewState] = React.useState("def");
-  // console.log(project);
+  console.log(project);
 
   React.useEffect(() => {
     if (project.websiteConfig) {
@@ -16,12 +16,13 @@ const Website = ({ project }) => {
 
   return (
     <>
-      {viewState === "def" ? <Default /> : ""}
+      {viewState === "def" ? <Default project={project} /> : ""}
       {viewState === "add" ? (
         <Add
           project={project}
           onSave={() => {
-            setViewState("def");
+            window.location.href = `/projects/${project.id}?name=${project.name}`;
+            // setViewState("def");
           }}
         />
       ) : (

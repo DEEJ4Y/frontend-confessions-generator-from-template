@@ -54,7 +54,7 @@ const ImageCropper = ({
     const data = await uploadImageToServer({
       base64String: croppedImage,
     });
-    console.log(data);
+    // console.log(data);
 
     if (data === "unauthorized") {
       window.location.href = "/auth/sign-in";

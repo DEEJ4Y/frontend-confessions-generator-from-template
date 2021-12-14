@@ -7,6 +7,7 @@ const addWebsiteConfigAndSave = async ({
   projectId,
 }) => {
   try {
+    console.log(websiteConfig);
     const res = await fetch(`${apiUrl}/websiteConfigs`, {
       method: "POST",
       credentials: "include",
@@ -19,7 +20,7 @@ const addWebsiteConfigAndSave = async ({
       const resData = await res.json();
 
       if (resData) {
-        // console.log(resData.data, "Saving to websiteConfig");
+        console.log(resData.data, "Saving to websiteConfig");
       }
       try {
         const projRes = await fetch(`${apiUrl}/projects/${projectId}`, {
@@ -35,7 +36,7 @@ const addWebsiteConfigAndSave = async ({
         // console.log("saved");
         if (Number(projRes.status) === 201 || projRes.status === 200) {
           const projData = await projRes.json();
-          console.log("Success", projData.data);
+          // console.log("Success", projData.data);
           setImageUploadMessage(() => {
             return {
               message: "Success! Your websiteConfig was saved.",
@@ -56,8 +57,7 @@ const addWebsiteConfigAndSave = async ({
       } catch {
         setImageUploadMessage(() => {
           return {
-            message:
-              "We ran into an error while saving your websiteConfig. Please ensure you have chosen a font and uploaded an image.",
+            message: "We ran into an error while saving your website config.",
             type: "danger",
           };
         });
@@ -69,8 +69,7 @@ const addWebsiteConfigAndSave = async ({
     } else {
       setImageUploadMessage(() => {
         return {
-          message:
-            "We ran into an error while saving your websiteConfig. Please ensure you have chosen a font and uploaded an image.",
+          message: "We ran into an error while saving your website config.",
           type: "danger",
         };
       });
@@ -78,8 +77,7 @@ const addWebsiteConfigAndSave = async ({
   } catch {
     setImageUploadMessage(() => {
       return {
-        message:
-          "We ran into an error while saving your websiteConfig. Please ensure you have chosen a font and uploaded an image.",
+        message: "We ran into an error while saving your website config.",
         type: "danger",
       };
     });

@@ -35,7 +35,7 @@ const addTemplateAndSave = async ({
         console.log("saved");
         if (Number(projRes.status) === 201 || projRes.status === 200) {
           const projData = await projRes.json();
-          console.log("Success", projData.data);
+          // console.log("Success", projData.data);
           setImageUploadMessage(() => {
             return {
               message: "Success! Your template was saved.",
