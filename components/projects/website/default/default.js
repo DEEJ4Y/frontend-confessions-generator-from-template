@@ -1,10 +1,15 @@
 import React from "react";
+import SaveButton from "./saveButton";
 import SelectWebsiteState from "./selectWebsiteState";
 import TitleAndMessage from "./titleAndMessage";
 import WebsiteLink from "./websiteLink";
 
 const Default = ({ project }) => {
   const [websiteConfig, setWebsiteConfig] = React.useState(
+    project.websiteConfig
+  );
+
+  const [originalWebsiteConfig, setOriginalWebsiteConfig] = React.useState(
     project.websiteConfig
   );
 
@@ -20,6 +25,12 @@ const Default = ({ project }) => {
       <TitleAndMessage
         websiteConfig={websiteConfig}
         setWebsiteConfig={setWebsiteConfig}
+      />
+
+      <SaveButton
+        prevState={originalWebsiteConfig}
+        newState={websiteConfig}
+        project={project}
       />
 
       {/* <p>{JSON.stringify(project.websiteConfig)}</p> */}
