@@ -16,8 +16,12 @@ const Website = ({ project }) => {
 
   return (
     <>
-      {viewState === "def" ? <Default project={project} /> : ""}
-      {viewState === "add" ? (
+      {viewState === "def" && project.websiteConfig ? (
+        <Default project={project} />
+      ) : (
+        ""
+      )}
+      {viewState === "add" && !project.websiteConfig ? (
         <Add
           project={project}
           onSave={() => {

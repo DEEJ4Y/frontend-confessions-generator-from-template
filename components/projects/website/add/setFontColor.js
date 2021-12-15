@@ -5,8 +5,10 @@ export default function SetFontColor({
   setState,
   property,
   propertyDisplayName,
+  prevState,
 }) {
-  const [chosenColor, setChosenColor] = React.useState("#000000");
+  let chosenColorVal = prevState || "#000000";
+  const [chosenColor, setChosenColor] = React.useState(chosenColorVal);
 
   const handleChangeComplete = (color) => {
     setChosenColor(() => color.hex);

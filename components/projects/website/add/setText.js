@@ -7,8 +7,10 @@ export default function SetText({
   propertyDisplayName,
   message,
   placeholder,
+  prevState,
 }) {
-  const [text, setText] = React.useState("");
+  let textVal = prevState || "";
+  const [text, setText] = React.useState(textVal);
   return (
     <>
       <FormGroup
