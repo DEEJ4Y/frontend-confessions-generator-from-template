@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 import { SketchPicker } from "react-color";
 
 export default function SetFontColor({
@@ -9,6 +10,7 @@ export default function SetFontColor({
 }) {
   let chosenColorVal = prevState || "#000000";
   const [chosenColor, setChosenColor] = React.useState(chosenColorVal);
+  const [viewState, setViewState] = React.useState(prevState);
 
   const handleChangeComplete = (color) => {
     setChosenColor(() => color.hex);
@@ -19,12 +21,31 @@ export default function SetFontColor({
 
   return (
     <>
-      <h6>Choose a color for your {propertyDisplayName}.</h6>
-      <SketchPicker
-        className="w-90"
-        color={chosenColor}
-        onChangeComplete={handleChangeComplete}
-      />
+      {viewState ? (
+        <h6 style={{ marginTop: "2rem" }}>
+          Chosen color:{" "}
+          <span style={{ color: chosenColor }}>{chosenColor}</span>
+          <Button
+            size={"sm"}
+            className="float-end"
+            style={{ marginTop: "-8px" }}
+            onClick={() => {
+              setViewState(() => false);
+            }}
+          >
+            Edit
+          </Button>
+        </h6>
+      ) : (
+        <>
+          <h6>Choose a color for your {propertyDisplayName}.</h6>
+          <SketchPicker
+            className="w-90"
+            color={chosenColor}
+            onChangeComplete={handleChangeComplete}
+          />
+        </>
+      )}
       <br />
     </>
   );
