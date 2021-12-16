@@ -8,7 +8,7 @@ import copyToClipboard from "../../../../utils/copyToClipboard";
 export default function WebsiteLink({ project }) {
   const [copiedLink, setCopiedLink] = React.useState(false);
   let projectLink = `http://localhost:3000/anonymous/${slugify(project.name)}/${
-    project.id
+    project.websiteConfig.id
   }`;
   return (
     <>
@@ -35,6 +35,7 @@ export default function WebsiteLink({ project }) {
               setCopiedLink(() => false);
             }, 3000);
           }}
+          style={{ zIndex: 0 }}
         >
           Copy{" "}
           <svg

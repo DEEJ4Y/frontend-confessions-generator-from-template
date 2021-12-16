@@ -61,7 +61,7 @@ const Renderer = ({
         style={{ opacity: "0", position: "absolute" }}
       />
       <p
-        className="mb-0"
+        className="mb-0 text-start"
         style={{
           fontFamily: `"${project.template.fontFamily}", ${
             project.template.fontCategory !== "handwriting"
