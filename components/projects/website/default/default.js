@@ -1,4 +1,5 @@
 import React from "react";
+import DeleteButton from "./deleteButton";
 import SaveButton from "./saveButton";
 import SelectWebsiteState from "./selectWebsiteState";
 import TitleAndMessage from "./titleAndMessage";
@@ -16,7 +17,13 @@ const Default = ({ project }) => {
   // console.log(websiteConfig);
   return (
     <>
-      <h5>Details about the website</h5>
+      <h5 className="pb-4">
+        Details about the website{" "}
+        <DeleteButton
+          websiteConfigId={originalWebsiteConfig.id}
+          projectId={project.id}
+        />
+      </h5>
 
       <SelectWebsiteState project={project} />
 

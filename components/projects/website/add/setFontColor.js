@@ -24,7 +24,13 @@ export default function SetFontColor({
       {viewState ? (
         <h6 style={{ marginTop: "2rem" }}>
           Chosen color:{" "}
-          <span style={{ color: chosenColor }}>{chosenColor}</span>
+          <span
+            style={{
+              color: chosenColor === "#ffffff" ? "#000000" : chosenColor,
+            }}
+          >
+            {chosenColor === "#ffffff" ? "white" : chosenColor}
+          </span>
           <Button
             size={"sm"}
             className="float-end"

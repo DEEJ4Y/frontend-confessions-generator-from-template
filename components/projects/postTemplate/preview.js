@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import editTemplate from "../../../services/templates/edit/editTemplate";
 import Card from "../../Card";
-import FormGroup from "../../FormGroup";
+// import FormGroup from "../../FormGroup";
 import FontColorSelect from "./add/FontColorSelect";
 import FontSizeSelector from "./add/FontSizeSelector";
 import LineHeightSelect from "./preview/lineHeightSelect";
