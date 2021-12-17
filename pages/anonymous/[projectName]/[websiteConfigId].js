@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
 import React from "react";
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import confess from "../../../services/confessionsPage/confess";
 import getWebsiteConfigService from "../../../services/confessionsPage/getWebsiteConfig";
 
 export default function ConfessAnonymously() {
@@ -9,6 +11,13 @@ export default function ConfessAnonymously() {
 
   const [websiteConfig, setWebsiteConfig] = React.useState(false);
   const [backgroundImage, setBackgroundImage] = React.useState(false);
+
+  const [confession, setConfession] = React.useState("");
+  const [formMessage, setFormMessage] = React.useState({
+    display: false,
+    variant: "danger",
+    message: "",
+  });
 
   const getWebsiteConfig = React.useRef(() => {});
 
@@ -35,8 +44,43 @@ export default function ConfessAnonymously() {
     }
   };
 
+  const validateConfession = () => {
+    if (confession.length === 0) {
+      setFormMessage(() => {
+        return {
+          display: true,
+          variant: "danger",
+          message: "Please add some text.",
+        };
+      });
+    } else {
+      setFormMessage(() => {
+        return {
+          display: true,
+          variant: "primary",
+          message: "Submitting",
+        };
+      });
+      confess({
+        confession: confession,
+        projectId: websiteConfig.project.id,
+        callback: () => {
+          setFormMessage(() => {
+            return {
+              display: true,
+              variant: "success",
+              message: "Submitted successfully!",
+            };
+          });
+          setConfession(() => "");
+        },
+      });
+    }
+  };
+
   return (
     <>
+      {/* Background Image */}
       <div
         style={{
           backgroundImage: `url(${backgroundImage})`,
@@ -45,13 +89,15 @@ export default function ConfessAnonymously() {
           backgroundSize: "cover",
         }}
       >
+        {/* Overlay */}
         <div
           style={{
             width: "100vw",
             height: "100vh",
-            backgroundColor: "rgba(0, 0, 0, 0.1)",
+            backgroundColor: "rgba(0, 0, 0, 0.3)",
           }}
         >
+          {/* Flex Alignment Container */}
           <div
             style={{
               maxWidth: "48rem",
@@ -63,6 +109,7 @@ export default function ConfessAnonymously() {
               justifyContent: "center",
             }}
           >
+            {/* Main Content Container */}
             <div>
               <h1
                 className="text-center mb-4"
@@ -82,12 +129,32 @@ export default function ConfessAnonymously() {
                 as="textarea"
                 rows={1}
                 style={{ maxHeight: "12rem", overflowY: "scroll" }}
+                value={confession}
+                onChange={({ target }) => {
+                  const { value } = target;
+                  setConfession(() => value);
+                }}
               />
               <p className="small text-secondary mb-0">
-                Maximum character count: bruh
+                Maximum character count:{" "}
+                {websiteConfig
+                  ? websiteConfig.project.template.maxCharacters
+                  : ""}
               </p>
-
-              <Button className="float-end" variant="light">
+              {formMessage.display ? (
+                <Alert variant={formMessage.variant}>
+                  {formMessage.message}
+                </Alert>
+              ) : (
+                ""
+              )}
+              <Button
+                className="float-end"
+                variant="light"
+                onClick={() => {
+                  validateConfession();
+                }}
+              >
                 Submit
               </Button>
             </div>
