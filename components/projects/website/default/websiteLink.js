@@ -24,6 +24,7 @@ export default function WebsiteLink({ project }) {
           aria-describedby="basic-addon2"
           disabled
           value={projectLink}
+          // style={{ zIndex: -1 }}
         />
         <Button
           variant="outline-primary"
@@ -35,7 +36,7 @@ export default function WebsiteLink({ project }) {
               setCopiedLink(() => false);
             }, 3000);
           }}
-          style={{ zIndex: 0 }}
+          // style={{ zIndex: 1 }}
         >
           Copy{" "}
           <svg

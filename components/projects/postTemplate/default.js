@@ -130,12 +130,9 @@ const Default = ({ project, onAdd, onDelete }) => {
                     className="img-fluid"
                     src={projectD.template.backgroundImage.imageData}
                     alt="background-image"
-                    style={
-                      {
-                        // width: templateContainer.offsetWidth,
-                        // height: templateContainer.offsetHeight,
-                      }
-                    }
+                    style={{
+                      maxHeight: "16.65rem",
+                    }}
                   />
                 ) : (
                   ""

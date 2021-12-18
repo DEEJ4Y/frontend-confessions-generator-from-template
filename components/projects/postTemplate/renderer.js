@@ -70,7 +70,7 @@ const Renderer = ({
           }`,
           fontSize: `${fontSize || project.template.fontSize || "22px"}`,
           color: `${fontColor || project.template.fontColor || "black"}`,
-          padding: `4rem`,
+          padding: `7rem`,
           lineHeight: lineHeight || project.template.lineHeight || 1.5,
         }}
       >

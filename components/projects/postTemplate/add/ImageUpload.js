@@ -16,7 +16,10 @@ const ImageUpload = ({
   return (
     <div className="mt-4">
       <h6 className="mb-0">Upload an image</h6>
-      <p className="mb-2">Upload the background image for your post here.</p>
+      <p className="mb-2">
+        Upload the background image for your post here. Text has an all round
+        padding of <code>64 pixels</code>.
+      </p>
 
       <Form.Group controlId="formFile" className="mb-2">
         <Form.Control

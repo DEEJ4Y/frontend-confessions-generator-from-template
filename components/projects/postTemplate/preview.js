@@ -13,7 +13,8 @@ import Renderer from "./renderer";
 const PreviewTemplate = ({ project, onPreviewClose }) => {
   const [projectPreview, setProjectPreview] = React.useState(project);
 
-  let postDimensions = "720px";
+  let postDimensions = "1080px";
+
   return (
     <div style={{ overflow: "hidden" }}>
       <div
@@ -26,6 +27,7 @@ const PreviewTemplate = ({ project, onPreviewClose }) => {
           backgroundColor: "#00000066",
           overflowY: "scroll",
           padding: "5rem",
+          zIndex: 10,
         }}
       >
         <Renderer
@@ -38,6 +40,7 @@ const PreviewTemplate = ({ project, onPreviewClose }) => {
             projectPreview.maxCharacters ||
             projectPreview.template.maxCharacters
           }
+          confession={project.selectedConfession}
         />
 
         <Container fluid style={{ maxWidth: postDimensions, padding: "0" }}>
