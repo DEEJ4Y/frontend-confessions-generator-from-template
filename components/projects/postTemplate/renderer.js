@@ -42,41 +42,55 @@ const Renderer = ({
   return (
     <div
       style={{
-        background: `no-repeat url(${project.template.backgroundImage.imageData}) 50% / 100%`,
+        // background: `no-repeat url(${project.template.backgroundImage.imageData}) 50% / 100%`,
         margin: "0 auto",
-        textAlign: "center",
+        // textAlign: "center",
         height: dimensions || "1080px",
         width: dimensions || "1080px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        // display: "flex",
+        // justifyContent: "center",
+        // alignItems: "center",
       }}
     >
-      <style>@import url({"" + fontUrl});</style>
-      <img
-        src={`${project.template.backgroundImage.imageData}`}
-        alt="template background"
-        height={dimensions || "1080px"}
-        width={dimensions || "1080px"}
-        style={{ opacity: "0", position: "absolute" }}
-      />
-      <p
-        className="mb-0 text-start"
+      <div
+        id="confession-renderer"
         style={{
-          fontFamily: `"${project.template.fontFamily}", ${
-            project.template.fontCategory !== "handwriting"
-              ? project.template.fontCategory
-              : "cursive"
-          }`,
-          fontSize: `${fontSize || project.template.fontSize || "22px"}`,
-          color: `${fontColor || project.template.fontColor || "black"}`,
-          padding: `7rem`,
-          lineHeight: lineHeight || project.template.lineHeight || 1.5,
+          background: `no-repeat url(${project.template.backgroundImage.imageData}) 50% / 100%`,
+          margin: "0 auto",
+          // textAlign: "center",
+          height: dimensions || "1080px",
+          width: dimensions || "1080px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        {confession || lorem}
-      </p>
-      {/* {JSON.stringify(project.template.id)} */}
+        <style>@import url({"" + fontUrl});</style>
+        <img
+          src={`${project.template.backgroundImage.imageData}`}
+          alt="template background"
+          height={dimensions || "1080px"}
+          width={dimensions || "1080px"}
+          style={{ opacity: "0", position: "absolute" }}
+        />
+        <p
+          className="mb-0 text-start"
+          style={{
+            fontFamily: `"${project.template.fontFamily}", ${
+              project.template.fontCategory !== "handwriting"
+                ? project.template.fontCategory
+                : "cursive"
+            }`,
+            fontSize: `${fontSize || project.template.fontSize || "22px"}`,
+            color: `${fontColor || project.template.fontColor || "black"}`,
+            padding: `7rem`,
+            lineHeight: lineHeight || project.template.lineHeight || 1.5,
+          }}
+        >
+          {confession || lorem}
+        </p>
+        {/* {JSON.stringify(project.template.id)} */}
+      </div>
     </div>
   );
 };

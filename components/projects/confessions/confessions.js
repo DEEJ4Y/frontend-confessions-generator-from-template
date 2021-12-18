@@ -6,12 +6,13 @@ import PreviewConfession from "./previewConfession";
 export default function Confessions({ project }) {
   const [preview, setPreview] = React.useState(false);
   const [confession, setSelectedConfession] = React.useState(false);
+  const [confessionD, setSelectedConfessionD] = React.useState(false);
 
   let confessions = project.confessions;
   React.useEffect(() => {
     confessions.reverse();
     project.confessions = confessions;
-    console.log(project.confessions);
+    // console.log(project.confessions);
   }, [confessions, project]);
   return (
     <>
@@ -46,6 +47,9 @@ export default function Confessions({ project }) {
                   style={{ marginTop: "-6px" }}
                   onClick={() => {
                     setSelectedConfession(() => confessionData.confession);
+                    setSelectedConfessionD(
+                      () => `confession-${project.confessions.length - idx}`
+                    );
                     setPreview(() => true);
                     // document.body.style.overflow = "hidden";
                   }}

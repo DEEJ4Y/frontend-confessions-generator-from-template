@@ -1,8 +1,14 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import elementToImageDownload from "../../../utils/elementToImageDownload";
 import Renderer from "../postTemplate/renderer";
 
-const PreviewConfession = ({ project, onPreviewClose, confession }) => {
+const PreviewConfession = ({
+  project,
+  onPreviewClose,
+  confession,
+  confessionName,
+}) => {
   const [projectPreview, setProjectPreview] = React.useState(project);
   let postDimensions = "1080px";
   var body = document.body,
@@ -42,6 +48,7 @@ const PreviewConfession = ({ project, onPreviewClose, confession }) => {
           confession={confession}
         />
         <Button
+          variant="secondary"
           className="mt-4 me-2"
           onClick={() => {
             onPreviewClose();
@@ -52,7 +59,10 @@ const PreviewConfession = ({ project, onPreviewClose, confession }) => {
         <Button
           className="mt-4"
           onClick={() => {
-            alert("Please download T_T");
+            elementToImageDownload({
+              elementId: "confession-renderer",
+              fileName: `${confessionName}`,
+            });
           }}
         >
           Download
