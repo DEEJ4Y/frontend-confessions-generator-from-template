@@ -38,9 +38,9 @@ const PreviewConfession = ({
         <Renderer
           project={projectPreview}
           dimensions={postDimensions}
-          fontSize={projectPreview.fontSize}
-          fontColor={projectPreview.fontColor}
-          lineHeight={projectPreview.lineHeight}
+          fontSize={projectPreview.template.fontSize}
+          fontColor={projectPreview.template.fontColor}
+          lineHeight={projectPreview.template.lineHeight}
           maxCharacters={
             projectPreview.maxCharacters ||
             projectPreview.template.maxCharacters
