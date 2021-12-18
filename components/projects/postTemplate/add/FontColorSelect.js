@@ -5,10 +5,17 @@ const FontColorSelect = ({ setTemplateData, prevData }) => {
   const [chosenColor, setChosenColor] = React.useState(prevData || "#000000");
 
   const handleChangeComplete = (color) => {
-    setChosenColor(() => color.hex);
     setTemplateData((prev) => {
-      return { ...prev, fontColor: color.hex };
+      return {
+        ...prev,
+        template: {
+          ...prev.template,
+          fontColor: color.hex,
+        },
+        fontColor: color.hex,
+      };
     });
+    setChosenColor(() => color.hex);
   };
   return (
     <div>

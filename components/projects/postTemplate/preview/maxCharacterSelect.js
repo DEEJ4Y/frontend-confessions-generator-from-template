@@ -15,6 +15,10 @@ export default function MaxCharactersSelect({ prevData, setValue }) {
             setValue((prev) => {
               return {
                 ...prev,
+                template: {
+                  ...prev.template,
+                  maxCharacters: value,
+                },
                 maxCharacters: value,
               };
             });

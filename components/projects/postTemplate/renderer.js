@@ -45,8 +45,6 @@ const Renderer = ({
   }
 
   React.useEffect(() => {
-    console.log(fontSize);
-
     let canvas = document.getElementById("confession-renderer");
     let ctx = canvas.getContext("2d");
 
@@ -61,6 +59,7 @@ const Renderer = ({
     lorem,
     fontSize,
     lineHeight,
+    fontColor,
     onTemplateBackgroundLoaded,
   ]);
 
@@ -72,6 +71,7 @@ const Renderer = ({
       let textBoxSize = fontSizeNum * lineHeight;
 
       ctx.font = `${fontSizeNum}px sans-serif`;
+      ctx.fillStyle = fontColor;
 
       // Calculate where text should start from
       let startY = wrapText(ctx, text, 112, 350, 856, textBoxSize);
@@ -84,7 +84,7 @@ const Renderer = ({
 
       wrapText(ctx, text, 112, startY, 856, textBoxSize);
     },
-    [confession, lineHeight, lorem, fontSizeNum]
+    [confession, lineHeight, lorem, fontSizeNum, fontColor]
   );
 
   return (

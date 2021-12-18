@@ -33,35 +33,34 @@ const PreviewTemplate = ({ project, onPreviewClose }) => {
         <Renderer
           project={projectPreview}
           dimensions={postDimensions}
-          fontSize={projectPreview.fontSize}
+          fontSize={projectPreview.template.fontSize}
           fontColor={projectPreview.fontColor}
-          lineHeight={projectPreview.lineHeight}
+          lineHeight={projectPreview.template.lineHeight}
           maxCharacters={
             projectPreview.maxCharacters ||
             projectPreview.template.maxCharacters
           }
-          confession={project.selectedConfession}
         />
 
         <Container fluid style={{ maxWidth: postDimensions, padding: "0" }}>
           <Card className={"bg-light mt-4"}>
             <FontSizeSelector
-              prevData={projectPreview.template.fontSize}
+              prevData={projectPreview.fontSize}
               setTemplateData={setProjectPreview}
             />
 
             <LineHeightSelect
-              prevData={projectPreview.template.lineHeight}
+              prevData={projectPreview.lineHeight}
               setValue={setProjectPreview}
             />
 
             <MaxCharactersSelect
-              prevData={projectPreview.template.maxCharacters}
+              prevData={projectPreview.maxCharacters}
               setValue={setProjectPreview}
             />
 
             <FontColorSelect
-              prevData={projectPreview.template.fontColor}
+              prevData={projectPreview.fontColor}
               setTemplateData={setProjectPreview}
             />
 

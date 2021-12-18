@@ -24,6 +24,6 @@ export default function wrapText(context, text, x, y, maxWidth, lineHeight) {
     y += lineHeight;
   }
   let textHeight = y - yOriginal;
-  let startPoint = (1080 - textHeight + 1.5 * lineHeight) / 2 - lineHeight / 2;
+  let startPoint = (1080 - textHeight + 1.5 * lineHeight) / 2;
   return startPoint;
 }

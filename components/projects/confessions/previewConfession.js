@@ -57,7 +57,7 @@ const PreviewConfession = ({
           Close
         </Button>
         <Button
-          className="mt-4"
+          className="mt-4 me-4"
           onClick={() => {
             downloadConfession(confessionName);
           }}

@@ -14,6 +14,10 @@ const FontSizeSelector = ({ setTemplateData, prevData }) => {
       setTemplateData((prev) => {
         return {
           ...prev,
+          template: {
+            ...prev.template,
+            fontSize: `${value}px`,
+          },
           fontSize: `${value}px`,
         };
       });

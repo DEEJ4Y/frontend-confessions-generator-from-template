@@ -15,6 +15,10 @@ export default function LineHeightSelect({ prevData, setValue }) {
             setValue((prev) => {
               return {
                 ...prev,
+                template: {
+                  ...prev.template,
+                  lineHeight: value,
+                },
                 lineHeight: value,
               };
             });
