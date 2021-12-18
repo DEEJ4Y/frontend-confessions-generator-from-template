@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import elementToImageDownload from "../../../utils/elementToImageDownload";
+import downloadConfession from "../../../services/confessionsPage/downloadConfession";
 import Renderer from "../postTemplate/renderer";
 
 const PreviewConfession = ({
@@ -59,10 +59,7 @@ const PreviewConfession = ({
         <Button
           className="mt-4"
           onClick={() => {
-            elementToImageDownload({
-              elementId: "confession-renderer",
-              fileName: `${confessionName}`,
-            });
+            downloadConfession(confessionName);
           }}
         >
           Download
