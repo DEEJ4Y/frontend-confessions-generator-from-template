@@ -94,7 +94,6 @@ const SignIn = () => {
         const resData = await res.json();
         if (resData.success === true) {
           user.setUserToken(resData.token);
-          alert(resData.token);
 
           let redirectUrl = getParam("redirect");
           window.location.href = redirectUrl || "/dashboard";
