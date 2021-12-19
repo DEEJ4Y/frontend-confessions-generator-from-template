@@ -55,7 +55,7 @@ const AppNavbar = () => {
       </ToastContainer>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container fluid>
-          <Navbar.Brand href="#home">socialautopost</Navbar.Brand>
+          <Navbar.Brand href="#">socialautopost</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

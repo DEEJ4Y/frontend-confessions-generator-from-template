@@ -46,6 +46,13 @@ const Renderer = ({
     fontUrl = `https://fonts.googleapis.com/css2?family=${fontFamily}:wght%40${fontWeight}&display=swap`;
   }
 
+  function htmlDecode(input) {
+    var e = document.createElement("textarea");
+    e.innerHTML = input;
+    // handle case of empty input
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  }
+
   React.useEffect(() => {
     let result = fonts.filter((font) => {
       return font.family.includes(origFontFam);
@@ -95,7 +102,7 @@ const Renderer = ({
     (canvas, ctx, templateBackground, font, fontCategory) => {
       ctx.drawImage(templateBackground, 0, 0, 1080, 1080);
 
-      let text = confession || lorem;
+      let text = htmlDecode(confession) || lorem;
       let textBoxSize = fontSizeNum * lineHeight;
 
       ctx.font = `${fontSizeNum}pt "${font.family}", ${fontCategory}`;
