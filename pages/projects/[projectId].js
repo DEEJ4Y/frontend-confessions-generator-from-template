@@ -4,7 +4,7 @@ import Toast from "../../components/Toast";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import ToastContainer from "react-bootstrap/ToastContainer";
-import { apiUrl, ProjectContext } from "../_app";
+import { apiUrl, ProjectContext, websiteUrl } from "../_app";
 import HeadTags from "../../components/headTags";
 import Spinner from "../../components/Spinner";
 import AppNavbar from "../../components/appNavbar";
@@ -118,6 +118,15 @@ const GetProject = () => {
               }}
             >
               Delete
+            </Button>
+            <Button
+              variant="outline-primary me-2"
+              className="float-end"
+              onClick={() => {
+                window.location.href = `${websiteUrl}/projects/${project.id}/edit`;
+              }}
+            >
+              Edit
             </Button>
             <h1>{project.name}</h1>
             <Create project={project} />

@@ -3,12 +3,15 @@ import Button from "react-bootstrap/Button";
 import downloadConfession from "../../../services/confessionsPage/downloadConfession";
 import Renderer from "../postTemplate/renderer";
 import slugify from "../../../utils/slugify";
+import Card from "../../Card";
+import deleteConfession from "../../../services/confessionsPage/deleteConfession";
 
 const PreviewConfession = ({
   project,
   onPreviewClose,
   confession,
   confessionName,
+  confessionId,
 }) => {
   const [projectPreview, setProjectPreview] = React.useState(project);
   let postDimensions = "1080px";
@@ -30,7 +33,7 @@ const PreviewConfession = ({
             html.offsetHeight
           )}px`,
           backgroundColor: "#00000066",
-          overflow: "scroll",
+          overflowY: "scroll",
           padding: "5rem",
           zIndex: 10,
         }}
@@ -47,26 +50,43 @@ const PreviewConfession = ({
           }
           confession={confession}
         />
-
-        <Button
-          className="mt-4"
-          onClick={() => {
-            downloadConfession(
-              slugify(`${project.name + " " + confessionName}`)
-            );
-          }}
+        <Card
+          className="bg-light text-center mt-4 mx-auto"
+          style={{ maxWidth: "1080px" }}
         >
-          Download
-        </Button>
-        <Button
-          variant="secondary"
-          className="mt-4 ms-2"
-          onClick={() => {
-            onPreviewClose();
-          }}
-        >
-          Close
-        </Button>
+          <Button
+            onClick={() => {
+              downloadConfession(
+                slugify(`${project.name + " " + confessionName}`)
+              );
+            }}
+          >
+            Download
+          </Button>
+          <Button
+            variant="danger"
+            className="m-4"
+            onClick={() => {
+              deleteConfession({
+                confessionId: confessionId,
+                callback: () => {
+                  onPreviewClose();
+                  location.reload();
+                },
+              });
+            }}
+          >
+            Delete
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              onPreviewClose();
+            }}
+          >
+            Close
+          </Button>
+        </Card>
         {/* {JSON.stringify(project.name)} */}
       </div>
     </div>

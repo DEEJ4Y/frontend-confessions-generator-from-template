@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 
 const apiUrl = "http://localhost:3001/api/v1";
+const websiteUrl = "http://localhost:3000";
 
 // Context for Logged in User
 const UserContext = React.createContext({
@@ -51,4 +52,4 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-export { apiUrl, UserContext, ProjectContext };
+export { apiUrl, websiteUrl, UserContext, ProjectContext };

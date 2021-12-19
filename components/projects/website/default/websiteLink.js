@@ -4,12 +4,19 @@ import Button from "react-bootstrap/Button";
 import slugify from "../../../../utils/slugify";
 import React from "react";
 import copyToClipboard from "../../../../utils/copyToClipboard";
+import { websiteUrl } from "../../../../pages/_app";
+
+const getWebsiteLink = (project) => {
+  let projectLink = `${websiteUrl}/anonymous/${slugify(project.name)}/${
+    project.websiteConfig.id
+  }`;
+  return projectLink;
+};
 
 export default function WebsiteLink({ project }) {
   const [copiedLink, setCopiedLink] = React.useState(false);
-  let projectLink = `http://localhost:3000/anonymous/${slugify(project.name)}/${
-    project.websiteConfig.id
-  }`;
+
+  let projectLink = getWebsiteLink(project);
   return (
     <>
       <h6 className="mt-4 mb-1">
@@ -55,3 +62,5 @@ export default function WebsiteLink({ project }) {
     </>
   );
 }
+
+export { getWebsiteLink };

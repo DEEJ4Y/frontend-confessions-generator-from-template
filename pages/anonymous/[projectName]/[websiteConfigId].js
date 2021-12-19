@@ -132,7 +132,13 @@ export default function ConfessAnonymously() {
                 value={confession}
                 onChange={({ target }) => {
                   const { value } = target;
-                  setConfession(() => value);
+
+                  setConfession(() =>
+                    value.substring(
+                      0,
+                      websiteConfig.project.template.maxCharacters
+                    )
+                  );
                 }}
               />
               <p className="small text-secondary mb-0">
