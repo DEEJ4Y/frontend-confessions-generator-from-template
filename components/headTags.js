@@ -17,7 +17,12 @@ const HeadTags = ({ title, description, url, image, robots, children }) => {
         content={description || "Create an account and start making templates!"}
       />
       <meta name="og:url" content={url || "socialautopost.herokuapp.com"} />
-      <meta name="og:image" content={image || "/logo.png"} />
+      <meta
+        name="og:image"
+        content={
+          image || "https://socialautopost.herokuapp.com/socialautopost.png"
+        }
+      />
 
       <link rel="preconnect" href="https://fonts.googleapis.com"></link>
       <link

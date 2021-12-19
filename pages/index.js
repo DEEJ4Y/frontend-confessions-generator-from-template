@@ -14,7 +14,7 @@ export default function Home() {
           "Tired of copy-pasting text into photoshop and exporting the image? socialautopost is for you! Automatically generate post images from follower created content."
         }
         url={"deej4y.github.io"}
-        image={"/socialautopost.png"}
+        image={"https://socialautopost.herokuapp.com/socialautopost.png"}
       />
       <SiteNavbar />
       <Title />
