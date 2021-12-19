@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 
-const apiUrl = "http://localhost:3001/api/v1";
-const websiteUrl = "http://localhost:3001";
+const apiUrl = "/api/v1";
+const websiteUrl = "";
 
 // Context for Logged in User
 const UserContext = React.createContext({
