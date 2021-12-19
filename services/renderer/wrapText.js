@@ -10,7 +10,9 @@ export default function wrapText(context, text, x, y, maxWidth, lineHeight) {
       var testLine = line + words[n] + " ";
       var metrics = context.measureText(testLine);
       var testWidth = metrics.width;
-
+      if (cars.length === 1 && testWidth < 856) {
+      } else {
+      }
       if (testWidth > maxWidth) {
         context.fillText(line, x, y);
         line = words[n] + " ";

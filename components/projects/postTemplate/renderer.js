@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import React from "react";
+import fonts from "../../../fonts";
 import wrapText from "../../../services/renderer/wrapText";
 
 const Renderer = ({
@@ -23,6 +24,7 @@ const Renderer = ({
   // Updating Font Family for google fonts compatibility: Font families must be '+' delimited strings
   const fontVariant = project.template.fontVariant;
   let fontFamily = project.template.fontFamily;
+  let origFontFam = fontFamily;
   fontFamily = fontFamily.replace(/\s/g, "+");
 
   let fontItalic = false;
@@ -45,32 +47,58 @@ const Renderer = ({
   }
 
   React.useEffect(() => {
-    let canvas = document.getElementById("confession-renderer");
-    let ctx = canvas.getContext("2d");
+    let result = fonts.filter((font) => {
+      return font.family.includes(origFontFam);
+    });
+    let requiredFont = result[0];
 
-    let templateBackground = new Image();
-    templateBackground.src = project.template.backgroundImage.imageData;
-    templateBackground.onload = () => {
-      onTemplateBackgroundLoaded(canvas, ctx, templateBackground);
-    };
+    let myFont = new FontFace(
+      origFontFam,
+      `url(${requiredFont.files[fontVariant]})`
+    );
+
+    myFont
+      .load()
+      .then((font) => {
+        let canvas = document.getElementById("confession-renderer");
+        let ctx = canvas.getContext("2d");
+        document.fonts.add(font);
+
+        let templateBackground = new Image();
+        templateBackground.src = project.template.backgroundImage.imageData;
+
+        templateBackground.onload = () => {
+          onTemplateBackgroundLoaded(
+            canvas,
+            ctx,
+            templateBackground,
+            font,
+            requiredFont.category
+          );
+        };
+      })
+      .catch((err) => console.error(err));
   }, [
     project.template.backgroundImage.imageData,
     confession,
     lorem,
     fontSize,
+    fontUrl,
+    fontVariant,
     lineHeight,
+    origFontFam,
     fontColor,
     onTemplateBackgroundLoaded,
   ]);
 
   const onTemplateBackgroundLoaded = React.useCallback(
-    (canvas, ctx, templateBackground) => {
+    (canvas, ctx, templateBackground, font, fontCategory) => {
       ctx.drawImage(templateBackground, 0, 0, 1080, 1080);
 
       let text = confession || lorem;
       let textBoxSize = fontSizeNum * lineHeight;
 
-      ctx.font = `${fontSizeNum}px sans-serif`;
+      ctx.font = `${fontSizeNum}pt "${font.family}", ${fontCategory}`;
       ctx.fillStyle = fontColor;
 
       // Calculate where text should start from

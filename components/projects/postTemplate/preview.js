@@ -34,7 +34,7 @@ const PreviewTemplate = ({ project, onPreviewClose }) => {
           project={projectPreview}
           dimensions={postDimensions}
           fontSize={projectPreview.template.fontSize}
-          fontColor={projectPreview.fontColor}
+          fontColor={projectPreview.template.fontColor}
           lineHeight={projectPreview.template.lineHeight}
           maxCharacters={
             projectPreview.maxCharacters ||
@@ -45,22 +45,22 @@ const PreviewTemplate = ({ project, onPreviewClose }) => {
         <Container fluid style={{ maxWidth: postDimensions, padding: "0" }}>
           <Card className={"bg-light mt-4"}>
             <FontSizeSelector
-              prevData={projectPreview.fontSize}
+              prevData={projectPreview.template.fontSize}
               setTemplateData={setProjectPreview}
             />
 
             <LineHeightSelect
-              prevData={projectPreview.lineHeight}
+              prevData={projectPreview.template.lineHeight}
               setValue={setProjectPreview}
             />
 
             <MaxCharactersSelect
-              prevData={projectPreview.maxCharacters}
+              prevData={projectPreview.template.maxCharacters}
               setValue={setProjectPreview}
             />
 
             <FontColorSelect
-              prevData={projectPreview.fontColor}
+              prevData={projectPreview.template.fontColor}
               setTemplateData={setProjectPreview}
             />
 
@@ -87,7 +87,16 @@ const PreviewTemplate = ({ project, onPreviewClose }) => {
                 onPreviewClose();
               }}
             >
-              Save and Exit
+              Save
+            </Button>
+            <Button
+              variant="outline-primary"
+              className="mt-4 ms-2"
+              onClick={() => {
+                onPreviewClose();
+              }}
+            >
+              Cancel
             </Button>
           </Card>
         </Container>

@@ -2,6 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import downloadConfession from "../../../services/confessionsPage/downloadConfession";
 import Renderer from "../postTemplate/renderer";
+import slugify from "../../../utils/slugify";
 
 const PreviewConfession = ({
   project,
@@ -29,8 +30,7 @@ const PreviewConfession = ({
             html.offsetHeight
           )}px`,
           backgroundColor: "#00000066",
-          overflowY: "scroll",
-          overflowX: "hidden",
+          overflow: "scroll",
           padding: "5rem",
           zIndex: 10,
         }}
@@ -47,22 +47,25 @@ const PreviewConfession = ({
           }
           confession={confession}
         />
+
+        <Button
+          className="mt-4"
+          onClick={() => {
+            downloadConfession(
+              slugify(`${project.name + " " + confessionName}`)
+            );
+          }}
+        >
+          Download
+        </Button>
         <Button
           variant="secondary"
-          className="mt-4 me-2"
+          className="mt-4 ms-2"
           onClick={() => {
             onPreviewClose();
           }}
         >
           Close
-        </Button>
-        <Button
-          className="mt-4 me-4"
-          onClick={() => {
-            downloadConfession(confessionName);
-          }}
-        >
-          Download
         </Button>
         {/* {JSON.stringify(project.name)} */}
       </div>

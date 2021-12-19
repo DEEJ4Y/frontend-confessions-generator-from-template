@@ -25,6 +25,7 @@ export default function Confessions({ project }) {
             setPreview(() => false);
           }}
           confession={confession}
+          confessionName={confessionD}
         />
       ) : (
         ""
@@ -48,7 +49,7 @@ export default function Confessions({ project }) {
                   onClick={() => {
                     setSelectedConfession(() => confessionData.confession);
                     setSelectedConfessionD(
-                      () => `confession-${project.confessions.length - idx}`
+                      () => `response-${project.confessions.length - idx}`
                     );
                     setPreview(() => true);
                     // document.body.style.overflow = "hidden";
