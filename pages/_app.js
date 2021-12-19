@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 
-const apiUrl = "https://socialautopost.herokuapp.com/api/v1";
-const websiteUrl = "https://socialautopost.herokuapp.com";
+const apiUrl = "http://localhost:3001/api/v1";
+const websiteUrl = "http://localhost:3001";
 
 // Context for Logged in User
 const UserContext = React.createContext({
