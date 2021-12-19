@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import HeadTags from "../../components/headTags";
 import FormGroup from "../../components/FormGroup";
 import Toast from "../../components/Toast";
-import SiteNavbar from "../../components/siteNavbar";
+import SiteNavbar from "../../components/index/siteNavbar";
 
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";

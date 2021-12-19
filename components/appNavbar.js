@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -55,7 +56,13 @@ const AppNavbar = () => {
       </ToastContainer>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container fluid>
-          <Navbar.Brand href="#">socialautopost</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <img
+              src="/socialautopost.png"
+              alt="logo"
+              style={{ mixBlendMode: "multiply" }}
+            ></img>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

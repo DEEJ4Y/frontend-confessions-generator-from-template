@@ -2,6 +2,11 @@ body {
   font-family: "Asap", sans-serif;
 }
 
+.padded-content {
+  margin: 0 auto;
+  max-width: 64rem;
+}
+
 .clickable {
   cursor: pointer;
 }

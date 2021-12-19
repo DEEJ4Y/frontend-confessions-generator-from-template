@@ -102,7 +102,7 @@ const Renderer = ({
     (canvas, ctx, templateBackground, font, fontCategory) => {
       ctx.drawImage(templateBackground, 0, 0, 1080, 1080);
 
-      let text = htmlDecode(confession) || lorem;
+      let text = confession ? htmlDecode(confession) : lorem;
       let textBoxSize = fontSizeNum * lineHeight;
 
       ctx.font = `${fontSizeNum}pt "${font.family}", ${fontCategory}`;

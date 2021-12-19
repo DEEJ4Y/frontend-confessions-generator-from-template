@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
 import Button from "react-bootstrap/Button";
@@ -7,10 +8,17 @@ import Navbar from "react-bootstrap/Navbar";
 
 const SiteNavbar = () => {
   return (
-    <div className="shadow">
+    <div className="shadow-sm">
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container fluid>
-          <Navbar.Brand href="#">socialautopost</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <img
+              src="/socialautopost.png"
+              alt="logo"
+              className="img-fluid"
+              style={{ mixBlendMode: "multiply" }}
+            ></img>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
