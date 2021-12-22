@@ -7,9 +7,11 @@ import AppNavbar from "../../components/appNavbar";
 import FormGroup from "../../components/FormGroup";
 import Toast from "../../components/Toast";
 import { useContext, useState } from "react";
+import { useRouter } from "next/router";
 import { apiUrl, UserContext } from "../_app";
 
 const CreateTemplate = () => {
+  const router = useRouter();
   const [projectName, setProjectName] = useState("");
   const [formErrorMessage, setFormErrorMessage] = useState("");
 
@@ -58,10 +60,10 @@ const CreateTemplate = () => {
         const resData = await res.json();
         if (resData.success === true) {
           user.setUserToken(resData.userToken);
-          window.location.href = "/dashboard";
+          router.push("/dashboard");
         }
       } else if (res.status == 401) {
-        window.location.href = "/auth/signin?redirect=/projects/create";
+        router.push("/auth/signin?redirect=/projects/create");
       } else {
         setToast(
           <Toast

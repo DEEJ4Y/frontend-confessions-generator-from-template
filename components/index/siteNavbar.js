@@ -11,14 +11,16 @@ const SiteNavbar = () => {
     <div className="shadow-sm">
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container fluid>
-          <Navbar.Brand href="/">
-            <img
-              src="/socialautopost.png"
-              alt="logo"
-              className="img-fluid"
-              style={{ mixBlendMode: "multiply" }}
-            ></img>
-          </Navbar.Brand>
+          <Link passHref href="/">
+            <Navbar.Brand>
+              <img
+                src="/socialautopost/socialautopost.png"
+                alt="logo"
+                className="img-fluid"
+                style={{ mixBlendMode: "multiply" }}
+              ></img>
+            </Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

@@ -1,15 +1,15 @@
 import { apiUrl } from "../../../pages/_app";
 
-export default async function deleteTemplate({ templateId }) {
+export default async function deleteTemplate({ templateId, router, project }) {
   try {
     const res = await fetch(`${apiUrl}/templates/${templateId}`, {
       method: "DELETE",
       credentials: "include",
     });
     if (res.status === 401) {
-      window.location.href = "/auth/sign-in";
+      router.push("/auth/sign-in");
     } else if (res.status === 200) {
-      location.reload();
+      router.push(`/projects/${project.id}?name=${project.name}`);
     } else {
       return false;
     }

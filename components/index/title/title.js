@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-
+import Link from "next/link";
 import Button from "react-bootstrap/Button";
 
 export default function Title() {
@@ -16,22 +16,16 @@ export default function Title() {
           <p className="text-secondary">
             Automatically generate post images from follower created content.
           </p>
-          <Button
-            size="lg"
-            className="my-2 px-4"
-            onClick={() => {
-              let link = document.createElement("a");
-              link.href = "/auth/create-account";
-              link.click();
-            }}
-          >
-            Get Started
-          </Button>
+          <Link passHref href="/auth/create-account">
+            <Button size="lg" className="my-2 px-4">
+              Get Started
+            </Button>
+          </Link>
         </div>
         <div className="col-lg-5 col-md-5 col-sm-12">
           <img
             className="img-fluid"
-            src="/website/title-img.png"
+            src="/socialautopost/website/title-img.png"
             alt="logo"
           ></img>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import router from "next/router";
 import Button from "react-bootstrap/Button";
 import SetText from "./setText";
 import SetFontColor from "./setFontColor";
@@ -6,6 +7,7 @@ import ImageUpload from "../../postTemplate/add/ImageUpload";
 import addWebsiteConfigAndSave from "../../../../services/websiteConfig/addWebsiteConfigAndSave";
 
 export default function Add({ project, onSave }) {
+  const router = useRouter();
   const [websiteConfig, setWebsiteConfig] = React.useState({
     project: project.id,
     title: "",
@@ -72,6 +74,7 @@ export default function Add({ project, onSave }) {
               onSave,
               setImageUploadMessage,
               projectId: project.id,
+              router: router,
             });
           }}
         >

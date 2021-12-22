@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import updateWebsiteConfig from "../../../../services/websiteConfig/updateWebsiteConfig";
+import { useRouter } from "next/router";
 
 export default function SaveButton({ prevState, newState, project }) {
   return (
@@ -13,6 +14,7 @@ export default function SaveButton({ prevState, newState, project }) {
                 reqBody: newState,
                 websiteConfigId: prevState.id,
                 project: project,
+                router: router,
               });
             }}
           >

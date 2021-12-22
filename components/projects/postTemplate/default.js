@@ -7,42 +7,8 @@ import Modale from "../../Modal";
 import PreviewTemplate from "./preview";
 
 const Default = ({ project, onAdd, onDelete }) => {
-  // const [projectD, setProject] = useState(project);
   const projectD = project;
   const [showPreview, setShowPreview] = useState(false);
-
-  // const getProject = useRef(() => {});
-  // let templateContainer = {};
-  // templateContainer = document
-  //   .getElementById("default-template-container")
-  //   .getBoundingClientRect();
-
-  // useEffect(() => {
-  //   getProject.current();
-  // }, [project]);
-
-  // getProject.current = async () => {
-  //   try {
-
-  //     // console.log(projectId);
-  //     const res = await fetch(`${apiUrl}/projects/${project.id}`, {
-  //       credentials: "include",
-  //     });
-
-  //     if (res.status === 200 || res.status === 201) {
-  //       const resData = await res.json();
-  //       setProject(() => resData.data);
-  //       // console.log(projectD);
-  //       // console.log(resData.data);
-  //     } else if (res.status == 401) {
-  //       window.location.href = `/auth/sign-in?redirect=/projects/${project.id}?name=${project.name}`;
-  //     } else {
-  //       console.log(res.status);
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   return (
     <>

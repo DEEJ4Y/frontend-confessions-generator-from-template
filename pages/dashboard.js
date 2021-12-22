@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { apiUrl, UserContext, ProjectContext } from "./_app";
 
@@ -13,6 +14,7 @@ import Spinner from "../components/Spinner";
 import Toasty from "../components/Toast";
 
 const Dashboard = () => {
+  const router = useRouter();
   const user = useContext(UserContext);
   const project = useContext(ProjectContext);
 
@@ -59,7 +61,7 @@ const Dashboard = () => {
           user.setUserToken(resData.userToken);
         }
       } else if (res.status == 401) {
-        window.location.href = "/auth/sign-in?redirect=/dashboard";
+        router.push("/auth/sign-in?redirect=/dashboard");
       }
     } catch (error) {
       setProjectsLoaded(true);

@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import editTemplate from "../../../services/templates/edit/editTemplate";
@@ -11,6 +12,7 @@ import MaxCharactersSelect from "./preview/maxCharacterSelect";
 import Renderer from "./renderer";
 
 const PreviewTemplate = ({ project, onPreviewClose }) => {
+  const router = useRouter();
   const [projectPreview, setProjectPreview] = React.useState(project);
 
   let postDimensions = "1080px";
@@ -83,6 +85,8 @@ const PreviewTemplate = ({ project, onPreviewClose }) => {
                       projectPreview.maxCharacters ||
                       projectPreview.template.maxCharacters,
                   },
+                  router: router,
+                  project: project,
                 });
                 onPreviewClose();
               }}

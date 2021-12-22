@@ -5,6 +5,7 @@ const addWebsiteConfigAndSave = async ({
   onSave,
   setImageUploadMessage,
   projectId,
+  router,
 }) => {
   try {
     console.log(websiteConfig);
@@ -45,7 +46,7 @@ const addWebsiteConfigAndSave = async ({
           });
           onSave();
         } else if (res.status == 401) {
-          window.location.href = `/auth/sign-in?redirect=/projects/${projectId}`;
+          router.push(`/auth/sign-in?redirect=/projects/${projectId}`);
         } else {
           setImageUploadMessage(() => {
             return {
@@ -65,7 +66,7 @@ const addWebsiteConfigAndSave = async ({
 
       // onSave();
     } else if (res.status === 401) {
-      window.location.href = "/auth/sign-in";
+      router.push("/auth/sign-in");
     } else {
       setImageUploadMessage(() => {
         return {

@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useRouter } from "next/router";
 
 import HeadTags from "../../components/headTags";
 import FormGroup from "../../components/FormGroup";
@@ -15,6 +16,7 @@ import { apiUrl, UserContext } from "../_app";
 import getParam from "../../utils/getParam";
 
 const SignIn = () => {
+  const router = useRouter();
   const [signInState, setSignInState] = useState({
     email: "",
     password: "",
@@ -95,8 +97,9 @@ const SignIn = () => {
         if (resData.success === true) {
           user.setUserToken(resData.token);
 
-          let redirectUrl = getParam("redirect");
-          window.location.href = redirectUrl || "/dashboard";
+          let redirectUrl = getParam("redirect") || "/dashboard";
+
+          router.push(redirectUrl);
         } else {
           setToast(() => (
             <Toast

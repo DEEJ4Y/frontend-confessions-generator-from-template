@@ -5,6 +5,7 @@ import Renderer from "../postTemplate/renderer";
 import slugify from "../../../utils/slugify";
 import Card from "../../Card";
 import deleteConfession from "../../../services/confessionsPage/deleteConfession";
+import { useRouter } from "next/router";
 
 const PreviewConfession = ({
   project,
@@ -13,6 +14,7 @@ const PreviewConfession = ({
   confessionName,
   confessionId,
 }) => {
+  const router = useRouter();
   const [projectPreview, setProjectPreview] = React.useState(project);
   let postDimensions = "1080px";
   var body = document.body,
@@ -71,7 +73,7 @@ const PreviewConfession = ({
                 confessionId: confessionId,
                 callback: () => {
                   onPreviewClose();
-                  location.reload();
+                  router.push(`/projects/${project.id}?name=${project.name}`);
                 },
               });
             }}

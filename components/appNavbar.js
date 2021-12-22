@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
@@ -10,6 +11,7 @@ import { apiUrl } from "../pages/_app";
 import Toast from "./Toast";
 
 const AppNavbar = () => {
+  const router = useRouter();
   const [toast, setToast] = useState("");
 
   const logout = async () => {
@@ -33,7 +35,7 @@ const AppNavbar = () => {
 
       const resData = await res.json();
       if (resData.success === true) {
-        window.location.href = "/auth/sign-in";
+        router.push("/auth/sign-in");
       }
     } catch (error) {
       console.error(error);
@@ -56,13 +58,15 @@ const AppNavbar = () => {
       </ToastContainer>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container fluid>
-          <Navbar.Brand href="/">
-            <img
-              src="/socialautopost.png"
-              alt="logo"
-              style={{ mixBlendMode: "multiply" }}
-            ></img>
-          </Navbar.Brand>
+          <Link passHref href="/">
+            <Navbar.Brand>
+              <img
+                src="/socialautopost/socialautopost.png"
+                alt="logo"
+                style={{ mixBlendMode: "multiply" }}
+              ></img>
+            </Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

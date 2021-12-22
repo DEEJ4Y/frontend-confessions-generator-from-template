@@ -1,8 +1,10 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Add from "./add/add";
 import Default from "./default/default";
 
 const Website = ({ project }) => {
+  const router = useRouter();
   const [viewState, setViewState] = React.useState("def");
   // console.log(project);
 
@@ -25,7 +27,7 @@ const Website = ({ project }) => {
         <Add
           project={project}
           onSave={() => {
-            window.location.href = `/projects/${project.id}?name=${project.name}`;
+            router.push(`/projects/${project.id}?name=${project.name}`);
             // setViewState("def");
           }}
         />

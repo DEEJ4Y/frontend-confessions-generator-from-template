@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useRouter } from "next/router";
 
 import HeadTags from "../../components/headTags";
 import FormGroup from "../../components/FormGroup";
@@ -14,6 +15,7 @@ import validatePassword from "../../utils/validatePassword";
 import { apiUrl, UserContext } from "../_app";
 
 const CreateAccount = () => {
+  const router = useRouter();
   const [createAccountState, setCreateAccountState] = useState({
     name: "",
     email: "",
@@ -116,7 +118,7 @@ const CreateAccount = () => {
         const resData = await res.json();
         if (resData.success === true) {
           user.setUserToken(resData.token);
-          window.location.href = "/dashboard";
+          router.push("/dashboard");
         }
       } else {
         <Toast

@@ -33,10 +33,11 @@ export default function ConfessAnonymously() {
   getWebsiteConfig.current = async (websiteConfigId) => {
     const resData = await getWebsiteConfigService({
       websiteConfigId: websiteConfigId,
+      router: router,
     });
     if (resData.data) {
       if (resData.data.visibility === false) {
-        window.location.href = "/page-not-found";
+        router.push("/page-not-found");
       } else {
         setWebsiteConfig(() => resData.data);
         setBackgroundImage(() => resData.data.backgroundImage.imageData);

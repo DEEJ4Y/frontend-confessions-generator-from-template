@@ -56,7 +56,7 @@ const GetProject = () => {
             setToast("");
           }
         } else if (res.status == 401) {
-          window.location.href = `/auth/sign-in?redirect=/projects/${projectId}`;
+          router.push(`/auth/sign-in?redirect=/projects/${projectId}`);
         } else {
           setToast(() => {
             return (
@@ -114,7 +114,7 @@ const GetProject = () => {
               variant="danger"
               className="float-end"
               onClick={() => {
-                deleteProject({ projectId: project.id });
+                deleteProject({ projectId: project.id, router: router });
               }}
             >
               Delete
@@ -123,7 +123,7 @@ const GetProject = () => {
               variant="outline-primary me-2"
               className="float-end"
               onClick={() => {
-                window.location.href = `${websiteUrl}/projects/${project.id}/edit`;
+                router.push(`${websiteUrl}/projects/${project.id}/edit`);
               }}
             >
               Edit

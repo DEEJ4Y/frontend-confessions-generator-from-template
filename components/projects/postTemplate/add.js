@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
 import selectFont from "../../../services/templates/add/selectFont";
 import addTemplateAndSave from "../../../services/templates/add/addTemplateAndSave";
@@ -10,6 +11,7 @@ import FontSizeSelector from "./add/FontSizeSelector";
 import FontColorSelect from "./add/FontColorSelect";
 
 const Add = ({ projectId, onSave }) => {
+  const router = useRouter();
   const [templateData, setTemplateData] = useState({
     project: projectId.id,
     fontData: {},
@@ -73,6 +75,7 @@ const Add = ({ projectId, onSave }) => {
                 onSave,
                 setImageUploadMessage,
                 projectId,
+                router,
               });
             }}
           >

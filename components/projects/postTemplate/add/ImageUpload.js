@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import ImageCropper from "../../../ImageCropper";
@@ -12,6 +13,7 @@ const ImageUpload = ({
   imgData,
   imgAspect,
 }) => {
+  const router = useRouter();
   const [imageCropComplete, setImageCropComplete] = React.useState(false);
   return (
     <div className="mt-4">
@@ -27,7 +29,9 @@ const ImageUpload = ({
           type="file"
           accept="image/jpeg"
           onChange={(e) => {
-            window.location.href = window.location.href + "#top";
+            let a = document.createElement("a");
+            a.href = "#top";
+            a.click();
             uploadImage(e, {
               setImageData,
               setTemplateData,

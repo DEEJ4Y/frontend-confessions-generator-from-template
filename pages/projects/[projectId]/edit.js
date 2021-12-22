@@ -35,8 +35,8 @@ const EditTemplate = () => {
     if (!isValid) {
       setFormErrorMessage(errorMessage);
     } else {
-      editProjectById(project.id, { name: projectName }, () => {
-        window.location.href = `/projects/${project.id}`;
+      editProjectById(project.id, { name: projectName }, router, () => {
+        router.push(`/projects/${project.id}`);
       });
     }
   };
@@ -52,7 +52,7 @@ const EditTemplate = () => {
 
   getProject.current = async (projectId) => {
     if (projectId) {
-      getProjectById(projectId, (data) => {
+      getProjectById(projectId, router, (data) => {
         setProject(() => data.data);
         setProjectName(() => data.data.name);
       });

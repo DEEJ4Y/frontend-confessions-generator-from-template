@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Cropper from "react-easy-crop";
 import getCroppedImg from "../utils/cropImage";
 import Button from "react-bootstrap/Button";
@@ -12,6 +13,7 @@ const ImageCropper = ({
   setImageCropComplete,
   imgAspect,
 }) => {
+  const router = useRouter();
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
@@ -57,7 +59,7 @@ const ImageCropper = ({
     // console.log(data);
 
     if (data === "unauthorized") {
-      window.location.href = "/auth/sign-in";
+      router.push("/auth/sign-in");
     } else if (data === false) {
       setImageUploadMessage(() => {
         return {

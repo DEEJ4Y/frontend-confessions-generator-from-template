@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 
@@ -18,6 +19,8 @@ const ProjectContext = React.createContext({
 });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
   // State for Logged in User
   const [userTokenState, setUserTokenState] = useState({
     userToken: "",
@@ -35,7 +38,7 @@ function MyApp({ Component, pageProps }) {
         return { ...prev, projectId: projectId };
       });
       if (redirect) {
-        window.location.href = redirect;
+        router.push(redirect);
       }
     },
   });

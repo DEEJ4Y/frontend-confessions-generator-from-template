@@ -3,6 +3,8 @@ import { apiUrl } from "../../pages/_app";
 export default async function deleteWebsiteConfig({
   websiteConfigId,
   redirectUrl,
+  router,
+  projectId,
 }) {
   try {
     const res = await fetch(`${apiUrl}/websiteConfigs/${websiteConfigId}`, {
@@ -11,9 +13,9 @@ export default async function deleteWebsiteConfig({
     });
 
     if (res.status === 200) {
-      location.reload();
+      router.push(`/projects/${projectId}`);
     } else if (res.status === 401) {
-      window.location.href = redirectUrl;
+      router.push(redirectUrl);
     } else {
       return false;
     }

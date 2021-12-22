@@ -1,6 +1,12 @@
 import { apiUrl } from "../../../pages/_app";
 
-export default async function editTemplate({ templateId, reqBody, callback }) {
+export default async function editTemplate({
+  templateId,
+  reqBody,
+  callback,
+  router,
+  project,
+}) {
   try {
     console.log(templateId, reqBody);
     const res = await fetch(`${apiUrl}/templates/${templateId}`, {
@@ -13,7 +19,7 @@ export default async function editTemplate({ templateId, reqBody, callback }) {
     });
 
     if (res.status === 401) {
-      window.location.href = "/auth/sign-in";
+      router.push("/auth/sign-in");
     } else if (res.status === 200) {
       const template = res.json();
       console.log(template);
@@ -24,7 +30,7 @@ export default async function editTemplate({ templateId, reqBody, callback }) {
     if (callback) {
       callback();
     }
-    location.reload();
+    router.push(`/projects/${project.id}?name=${project.name}`);
   } catch (error) {
     console.error(error);
   }
