@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 
-const apiUrl = "http://socialautopost.herokuapp.com/api/v1";
-const websiteUrl = "http://deej4y.github.io/socialautopost";
+const apiUrl = "https://socialautopost.herokuapp.com/api/v1";
+const websiteUrl = "https://deej4y.github.io/socialautopost";
 
 // Context for Logged in User
 const UserContext = React.createContext({
