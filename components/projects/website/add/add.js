@@ -1,5 +1,5 @@
 import React from "react";
-import router from "next/router";
+import { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
 import SetText from "./setText";
 import SetFontColor from "./setFontColor";
