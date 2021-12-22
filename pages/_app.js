@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 
 const apiUrl = "https://socialautopost.herokuapp.com/api/v1";
-const websiteUrl = "https://socialautopost.herokuapp.com";
+const websiteUrl = "https://deej4y.github.io/socialautopost";
 
 // Context for Logged in User
 const UserContext = React.createContext({
