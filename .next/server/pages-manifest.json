@@ -1,0 +1,15 @@
+{
+  "/_app": "pages/_app.js",
+  "/anonymous/[projectName]/[websiteConfigId]": "pages/anonymous/[projectName]/[websiteConfigId].html",
+  "/auth/create-account": "pages/auth/create-account.html",
+  "/auth/sign-in": "pages/auth/sign-in.html",
+  "/dashboard": "pages/dashboard.html",
+  "/": "pages/index.html",
+  "/page-not-found": "pages/page-not-found.html",
+  "/projects/[projectId]": "pages/projects/[projectId].html",
+  "/projects/[projectId]/edit": "pages/projects/[projectId]/edit.html",
+  "/projects/create": "pages/projects/create.html",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
