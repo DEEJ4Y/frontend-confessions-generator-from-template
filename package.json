@@ -7,7 +7,7 @@
     "build": "next build && next export && git add . && git commit -m \"Add updated build\"",
     "start": "next start",
     "lint": "next lint",
-    "copy-build-to-temp": "cd .. && cp -a frontend-confessions-generator-from-template/out/. temp/ && echo \"Copied build to temp\" && cd frontend-confessions-generator-from-template/ && git switch gh-pages && cd .. && cp -a temp/. frontend-confessions-generator-from-template/ && git add . && git commit -m \"Add updated build\" && git push && git switch main",
+    "copy-build-to-temp": "cd .. && cp -a frontend-confessions-generator-from-template/out/. temp/ && echo \"Copied build to temp\" && cd frontend-confessions-generator-from-template/ && git switch gh-pages && cd .. && cp -a temp/. frontend-confessions-generator-from-template/ && cd frontend-confessions-generator-from-template/ && git add . && git commit -m \"Add updated build\" && git push && git switch main",
     "deploy-gh-pages": "npm run build && npm run copy-build-to-temp"
   },
   "dependencies": {
