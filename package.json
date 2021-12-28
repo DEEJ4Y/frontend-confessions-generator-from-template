@@ -7,8 +7,9 @@
     "build": "next build && next export && git add . && git commit -m \"Add updated build\"",
     "start": "next start",
     "lint": "next lint",
-    "copy-build-to-temp": "cd .. && cp -r frontend-confessions-generator-from-template/out temp && echo \"Copied build to temp\" && pwd",
-    "deploy": "npm run build && npm run copy-build-to-temp"
+    "copy-build-to-temp": "cd .. && cp -a frontend-confessions-generator-from-template/out/. temp/ && echo \"Copied build to temp\" && pwd && cd frontend-confessions-generator-from-template/ && pwd && git switch gh-pages && pwd",
+    "switch-branch-gh-pages": "",
+    "deploy-gh-pages": "npm run build && npm run copy-build-to-temp"
   },
   "dependencies": {
     "@emotion/react": "^11.5.0",
