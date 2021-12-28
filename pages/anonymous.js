@@ -3,8 +3,10 @@ import React from "react";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import confess from "../../../services/confessionsPage/confess";
-import getWebsiteConfigService from "../../../services/confessionsPage/getWebsiteConfig";
+import confess from "../services/confessionsPage/confess";
+import getWebsiteConfigService from "../services/confessionsPage/getWebsiteConfig";
+import getParam from "../utils/getParam";
+import Spinner from "../components/Spinner";
 
 export default function ConfessAnonymously() {
   const router = useRouter();
@@ -22,6 +24,11 @@ export default function ConfessAnonymously() {
   const getWebsiteConfig = React.useRef(() => {});
 
   React.useEffect(() => {
+    let webConfigId = getParam("id");
+    if (webConfigId) {
+      setWebsiteConfig(() => webConfigId);
+      getWebsiteConfig.current(webConfigId);
+    }
     if (router && router.query) {
       const { websiteConfigId } = router.query;
       if (websiteConfigId) {
@@ -31,17 +38,20 @@ export default function ConfessAnonymously() {
   }, [router, router.query]);
 
   getWebsiteConfig.current = async (websiteConfigId) => {
+    console.log(websiteConfigId);
     const resData = await getWebsiteConfigService({
       websiteConfigId: websiteConfigId,
       router: router,
     });
-    if (resData.data) {
+    if (resData && resData.data) {
       if (resData.data.visibility === false) {
         router.push("/page-not-found");
       } else {
         setWebsiteConfig(() => resData.data);
         setBackgroundImage(() => resData.data.backgroundImage.imageData);
       }
+    } else {
+      router.push("/page-not-found");
     }
   };
 
@@ -111,60 +121,64 @@ export default function ConfessAnonymously() {
             }}
           >
             {/* Main Content Container */}
-            <div>
-              <h1
-                className="text-center mb-4"
-                style={{
-                  color: websiteConfig.titleFontColor,
-                }}
-              >
-                {websiteConfig.title}
-              </h1>
-              <p
-                className="text-start mb-0"
-                style={{ color: websiteConfig.messageFontColor }}
-              >
-                {websiteConfig.message}
-              </p>
-              <Form.Control
-                as="textarea"
-                rows={1}
-                style={{ maxHeight: "12rem", overflowY: "scroll" }}
-                value={confession}
-                onChange={({ target }) => {
-                  const { value } = target;
+            {websiteConfig.title ? (
+              <div>
+                <h1
+                  className="text-center mb-4"
+                  style={{
+                    color: websiteConfig.titleFontColor,
+                  }}
+                >
+                  {websiteConfig.title}
+                </h1>
+                <p
+                  className="text-start mb-0"
+                  style={{ color: websiteConfig.messageFontColor }}
+                >
+                  {websiteConfig.message}
+                </p>
+                <Form.Control
+                  as="textarea"
+                  rows={1}
+                  style={{ maxHeight: "12rem", overflowY: "scroll" }}
+                  value={confession}
+                  onChange={({ target }) => {
+                    const { value } = target;
 
-                  setConfession(() =>
-                    value.substring(
-                      0,
-                      websiteConfig.project.template.maxCharacters
-                    )
-                  );
-                }}
-              />
-              <p className="small text-secondary mb-0">
-                Maximum character count:{" "}
-                {websiteConfig
-                  ? websiteConfig.project.template.maxCharacters
-                  : ""}
-              </p>
-              {formMessage.display ? (
-                <Alert variant={formMessage.variant}>
-                  {formMessage.message}
-                </Alert>
-              ) : (
-                ""
-              )}
-              <Button
-                className="float-end"
-                variant="light"
-                onClick={() => {
-                  validateConfession();
-                }}
-              >
-                Submit
-              </Button>
-            </div>
+                    setConfession(() =>
+                      value.substring(
+                        0,
+                        websiteConfig.project.template.maxCharacters
+                      )
+                    );
+                  }}
+                />
+                <p className="small text-secondary mb-0">
+                  Maximum character count:{" "}
+                  {websiteConfig && websiteConfig.project
+                    ? websiteConfig.project.template.maxCharacters
+                    : ""}
+                </p>
+                {formMessage.display ? (
+                  <Alert variant={formMessage.variant}>
+                    {formMessage.message}
+                  </Alert>
+                ) : (
+                  ""
+                )}
+                <Button
+                  className="float-end"
+                  variant="light"
+                  onClick={() => {
+                    validateConfession();
+                  }}
+                >
+                  Submit
+                </Button>
+              </div>
+            ) : (
+              <Spinner />
+            )}
           </div>
         </div>
       </div>

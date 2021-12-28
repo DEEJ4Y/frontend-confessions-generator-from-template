@@ -7,9 +7,9 @@ import copyToClipboard from "../../../../utils/copyToClipboard";
 import { websiteUrl } from "../../../../pages/_app";
 
 const getWebsiteLink = (project) => {
-  let projectLink = `${websiteUrl}/anonymous/${slugify(project.name)}/${
+  let projectLink = `${websiteUrl}/anonymous?id=${
     project.websiteConfig.id
-  }`;
+  }&name=${slugify(project.name)}`;
   return projectLink;
 };
 

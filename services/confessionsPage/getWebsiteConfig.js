@@ -13,6 +13,8 @@ export default async function getWebsiteConfigService({
     }
   } catch (error) {
     console.error(error);
-    return false;
+    router.push("/page-not-found");
+
+    // return false;
   }
 }
