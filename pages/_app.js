@@ -9,7 +9,7 @@ import "../styles/globals.css";
 
 // Production on server
 const apiUrl = "/api/v1";
-const websiteUrl = "/";
+const websiteUrl = "http://localhost:3001";
 
 // Development
 // const apiUrl = "http://localhost:3001/api/v1";
