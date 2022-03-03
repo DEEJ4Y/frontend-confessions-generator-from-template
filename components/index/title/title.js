@@ -25,7 +25,7 @@ export default function Title() {
         <div className="col-lg-5 col-md-5 col-sm-12">
           <img
             className="img-fluid"
-            src="/socialautopost/website/title-img.png"
+            src="/website/title-img.png"
             alt="logo"
           ></img>
         </div>

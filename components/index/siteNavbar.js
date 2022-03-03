@@ -14,7 +14,7 @@ const SiteNavbar = () => {
           <Link passHref href="/">
             <Navbar.Brand>
               <img
-                src="/socialautopost/socialautopost.png"
+                src="/socialautopost.png"
                 alt="logo"
                 className="img-fluid"
                 style={{ mixBlendMode: "multiply" }}

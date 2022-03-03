@@ -1,5 +1,7 @@
 module.exports = {
   reactStrictMode: true,
-  basePath: "/socialautopost",
-  assetPrefix: "/socialautopost",
+
+  // Github deploy
+  // basePath: "/socialautopost",
+  // assetPrefix: "/socialautopost",
 };
