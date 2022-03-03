@@ -4,8 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 
 // Production
-const apiUrl = "https://socialautopost.herokuapp.com/api/v1";
-const websiteUrl = "https://deej4y.github.io/socialautopost";
+// const apiUrl = "https://socialautopost.herokuapp.com/api/v1";
+// const websiteUrl = "https://deej4y.github.io/socialautopost";
+
+// Production on server
+const apiUrl = "/api/v1";
+const websiteUrl = "/";
 
 // Development
 // const apiUrl = "http://localhost:3001/api/v1";
